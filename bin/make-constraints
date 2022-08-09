@@ -1,0 +1,31 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+echo PHP_EOL, PHP_EOL;
+
+try {
+    $files = MAKS\Mighty\Validation\Maker::makeConstraints();
+
+    $lengths = array_map(fn ($file) => strlen(basename($file)), $files);
+    $width   = max($lengths);
+    $lines   = array_map(function ($file) use ($width) {
+        static $count = 0;
+
+        $name = sprintf('[%s]', basename($file, '.php'));
+        $line = sprintf("(%03d) %'--{$width}s-> %s", ++$count, $name, $file);
+
+        return $line;
+    }, $files);
+
+    printf("Generated rule constraints under: '%s'\n\n%s", dirname(current($files)), implode("\n", $lines));
+} catch (Throwable $error) {
+    printf("Error: %s\n%s\n\n", $error->getMessage(), $error->getTraceAsString());
+
+    exit(1);
+}
+
+echo PHP_EOL, PHP_EOL;
+
+exit(0);
