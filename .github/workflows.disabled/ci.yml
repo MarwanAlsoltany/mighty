@@ -1,0 +1,282 @@
+name: CI
+
+on:
+    push:
+        branches:
+            - master
+            - dev
+
+    pull_request:
+        branches:
+            - master
+
+env:
+    fail-fast: true
+
+permissions:
+    contents: read
+
+jobs:
+
+    composer:
+
+        name: 'Composer: validation and configuration (${{ matrix.php-version }})'
+
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                php-version:
+                    - 8.1
+
+        outputs:
+            cache-dir: ${{ steps.config.outputs.cache-dir }}
+
+        steps:
+            -
+                name: 'Checkout code'
+                uses: actions/checkout@v3
+            -
+                name: 'Setup PHP'
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php-version }}
+                    tools: composer
+                    coverage: none
+            -
+                name: 'Validate composer.json'
+                run: 'composer validate --strict --no-check-lock'
+            -
+                name: 'Get Composer cache directory'
+                id: config
+                run: 'echo "::set-output name=cache-dir::$(composer config cache-files-dir)"'
+            -
+                if: ${{ failure() && steps.config.conclusion == 'failure' }}
+                name: 'Remove Composer cache directory'
+                run: 'rm -rf ${{ steps.config.outputs.cache-dir }}'
+
+
+    php-cs-fixer:
+
+        needs:
+            - composer
+
+        name: 'PHP-CS-Fixer: coding standard fixes (${{ matrix.php-version }})'
+
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                php-version:
+                    - 8.1
+
+        steps:
+            -
+                name: 'Checkout code'
+                uses: actions/checkout@v3
+            -
+                name: 'Setup PHP'
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php-version }}
+                    extensions: 'mbstring, ctype, json, dom, intl, fileinfo, gd'
+                    tools: composer
+                    coverage: none
+                env:
+                    phpts: ts
+                    update: true
+            -
+                name: 'Cache Composer dependencies'
+                uses: actions/cache@v3
+                with:
+                    path: ${{ needs.composer.outputs.cache-dir }}
+                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+                    restore-keys: ${{ runner.os }}-composer-
+            -
+                name: 'Install Composer dependencies'
+                run: 'composer install --prefer-dist --no-scripts --no-suggest --no-interaction'
+            -
+                name: 'Run PHP-CS-Fixer'
+                run: 'vendor/bin/php-cs-fixer fix --verbose --config=.php-cs-fixer.dist.php --diff --dry-run --allow-risky=yes --using-cache=no'
+
+
+    phpstan:
+
+        needs:
+            - composer
+
+        name: 'PHPStan: static analysis (${{ matrix.php-version }})'
+
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                php-version:
+                    - 8.1
+
+        steps:
+            -
+                name: 'Checkout code'
+                uses: actions/checkout@v3
+            -
+                name: 'Setup PHP'
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php-version }}
+                    extensions: 'mbstring, ctype, json, dom, intl, fileinfo, gd'
+                    tools: composer
+                    coverage: none
+                env:
+                    phpts: ts
+                    update: true
+            -
+                name: 'Cache Composer dependencies'
+                uses: actions/cache@v3
+                with:
+                    path: ${{ needs.composer.outputs.cache-dir }}
+                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+                    restore-keys: ${{ runner.os }}-composer-
+            -
+                name: 'Install Composer dependencies'
+                run: 'composer install --prefer-dist --no-scripts --no-suggest --no-interaction'
+            -
+                name: 'Run PHPStan'
+                run: 'vendor/bin/phpstan analyze --verbose --configuration=phpstan.neon.dist'
+
+
+    phpunit:
+
+        needs:
+            - composer
+
+        name: 'PHPUnit: unit tests (${{ matrix.php-version }}) [${{ matrix.operating-system }}]'
+
+        runs-on: ${{ matrix.operating-system }}
+
+        continue-on-error: ${{ matrix.allow-failures }}
+
+        strategy:
+            matrix:
+                operating-system:
+                    - ubuntu-latest
+                    - windows-latest
+                php-version:
+                    - 8.1
+                allow-failures: [false]
+                include:
+                    -
+                        operating-system: macos-latest
+                        php-version: 8.1
+                        allow-failures: true
+                        coverage: xdebug
+
+        steps:
+            -
+                name: 'Checkout code'
+                uses: actions/checkout@v3
+            -
+                name: 'Setup PHP'
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php-version }}
+                    extensions: 'mbstring, ctype, json, dom, intl, fileinfo, gd, xdebug'
+                    ini-values: 'memory_limit=1024M, max_execution_time=360'
+                    tools: composer
+                    coverage: xdebug
+                env:
+                    phpts: ts
+                    update: true
+            -
+                name: 'PHP Info'
+                run: 'php --version && php --info'
+            -
+                name: 'Get Composer cache directory'
+                id: composer-config
+                run: 'echo "::set-output name=cache-dir::$(composer config cache-files-dir)"'
+            -
+                name: 'Cache Composer dependencies'
+                uses: actions/cache@v3
+                with:
+                    path: ${{ steps.composer-config.outputs.cache-dir }}
+                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+                    restore-keys: ${{ runner.os }}-composer-
+            -
+                name: 'Install Composer dependencies'
+                run: 'composer install --prefer-dist --no-scripts --no-suggest --no-interaction'
+            -
+                name: 'Add PHPUnit matcher'
+                run: "echo '::add-matcher::${{ runner.tool_cache }}/phpunit.json'"
+            -
+                name: 'Run PHPUnit'
+                run: 'vendor/bin/phpunit --verbose --configuration=phpunit.xml.dist'
+            -
+                name: 'Upload coverage to Codecov'
+                if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+                uses: codecov/codecov-action@v3
+                with:
+                    verbose: true
+                    files: build/phpunit/coverage/clover.xml
+                    flags: unittests
+                    name: tests
+                    fail_ci_if_error: true
+            # # to use Codacy instead of Codecov, uncomment the following step and comment the previous step
+            # -
+            #     name: 'Run Codacy Coverage Reporter'
+            #     if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+            #     run: 'bash <(curl -Ls https://coverage.codacy.com/get.sh)'
+            #     env:
+            #         CODACY_PROJECT_TOKEN: YOUR_CODACY_PROJECT_TOKEN
+            #     uses: codecov/codecov-action@v3
+
+
+    phpbench:
+
+        needs:
+            - composer
+            - phpunit
+
+        name: 'PHPBench: performance bechmarks (${{ matrix.php-version }}) [${{ matrix.operating-system }}]'
+
+        runs-on: ${{ matrix.operating-system }}
+
+        strategy:
+            matrix:
+                operating-system:
+                    - ubuntu-latest
+                    - windows-latest
+                php-version:
+                    - 8.1
+
+        steps:
+            -
+                name: 'Checkout code'
+                uses: actions/checkout@v3
+            -
+                name: 'Setup PHP'
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php-version }}
+                    extensions: 'mbstring, ctype, json, dom, intl, fileinfo, gd, opcache'
+                    ini-values: 'memory_limit=-1, max_execution_time=3600, opcache.enable_cli=1, opcache.jit=1235, opcache.jit_buffer_size=256M'
+                    tools: composer
+                    coverage: none
+                env:
+                    phpts: ts
+                    update: true
+            -
+                name: 'Get Composer cache directory'
+                id: composer-config
+                run: 'echo "::set-output name=cache-dir::$(composer config cache-files-dir)"'
+            -
+                name: 'Cache Composer dependencies'
+                uses: actions/cache@v3
+                with:
+                    path: ${{ steps.composer-config.outputs.cache-dir }}
+                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+                    restore-keys: ${{ runner.os }}-composer-
+            -
+                name: 'Install Composer dependencies'
+                run: 'composer install --prefer-dist --no-scripts --no-suggest --no-interaction'
+            -
+                name: 'Run PHPBench'
+                run: 'vendor/bin/phpbench run --verbose --config=phpbench.json.dist --report=overview'

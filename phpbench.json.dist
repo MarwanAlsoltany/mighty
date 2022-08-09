@@ -1,0 +1,15 @@
+{
+    "$schema":"./vendor/phpbench/phpbench/phpbench.schema.json",
+    "runner.bootstrap": "vendor/autoload.php",
+    "runner.path": "tests/Benchmarks",
+    "runner.file_pattern": "*Bench.php",
+    "runner.revs": 10,
+    "runner.iterations": 10,
+    "runner.retry_threshold": 5,
+    "runner.assert": "mode(variant.time.avg) as ms <= mode(baseline.time.avg) as ms +/- 5%",
+    "runner.php_config": {
+        "memory_limit": "1G",
+        "xdebug.mode": "none"
+    },
+    "expression.strip_tailing_zeros": true
+}

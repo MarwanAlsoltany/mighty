@@ -1,0 +1,18 @@
+parameters:
+    level: 5
+    paths:
+        - 'src'
+    excludePaths:
+        analyse: { }
+        analyseAndScan: { }
+    fileExtensions:
+        - 'php'
+    tmpDir: 'build/phpstan'
+    typeAliases:
+        number: 'int|float'
+        scalar: 'bool|int|float|string'
+        scalarOrNull: 'null|bool|int|float|string'
+        nullable: 'null|bool|int|float|string|array|object'
+        parameters: 'array<string,mixed>'
+    ignoreErrors:
+        - '/bla bla bla/'

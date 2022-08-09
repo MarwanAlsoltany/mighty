@@ -1,0 +1,17 @@
+# https://git-scm.com/docs/gitattributes
+
+/.github export-ignore
+/.gitattributes export-ignore
+/*.xml.dist export-ignore
+/*.dist.php export-ignore
+/*.yml export-ignore
+/*.yaml export-ignore
+/docs export-ignore
+/tests export-ignore
+
+* text=auto
+*.php text eol=lf
+*.png binary
+*.jpg binary
+
+composer.lock -diff

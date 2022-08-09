@@ -1,0 +1,119 @@
+name: CD
+
+on:
+    workflow_run:
+        workflows:
+            - CI
+        types:
+            - completed
+
+env:
+    fail-fast: true
+
+permissions:
+    contents: read
+
+jobs:
+
+    composer:
+
+        name: 'Composer: validation and configuration (${{ matrix.php-version }})'
+
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                php-version:
+                    - 8.1
+
+        outputs:
+            cache-dir: ${{ steps.config.outputs.cache-dir }}
+
+        steps:
+            -
+                name: 'Checkout code'
+                uses: actions/checkout@v3
+            -
+                name: 'Setup PHP'
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php-version }}
+                    tools: composer
+                    coverage: none
+            -
+                name: 'Validate composer.json'
+                run: 'composer validate --strict --no-check-lock'
+            -
+                name: 'Get Composer cache directory'
+                id: config
+                run: 'echo "::set-output name=cache-dir::$(composer config cache-files-dir)"'
+            -
+                if: ${{ failure() && steps.config.conclusion == 'failure' }}
+                name: 'Remove Composer cache directory'
+                run: 'rm -rf ${{ steps.config.outputs.cache-dir }}'
+
+
+    doctum:
+
+        needs:
+            - composer
+
+        name: 'Doctum: API docs (${{ matrix.php-version }})'
+
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                php-version:
+                    - 8.1
+
+        permissions:
+            contents: write
+
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+        steps:
+            -
+                name: 'Checkout code'
+                uses: actions/checkout@v3
+            -
+                name: 'Setup PHP'
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php-version }}
+                    extensions: 'mbstring, ctype, json, dom, intl, fileinfo, gd'
+                    tools: composer
+                    coverage: none
+                env:
+                    phpts: ts
+                    update: true
+            -
+                name: 'Cache Composer dependencies'
+                uses: actions/cache@v3
+                with:
+                    path: ${{ needs.composer.outputs.cache-dir }}
+                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+                    restore-keys: ${{ runner.os }}-composer-
+            -
+                name: 'Install Composer dependencies'
+                run: 'composer install --prefer-dist --no-scripts --no-suggest --no-interaction'
+            -
+                name: 'Run Doctum'
+                run: 'php vendor/bin/doctum.php update .doctum.dist.php --verbose --force --no-progress || printf "\\n%s" ""'
+            -
+                name: 'Deploy Docs'
+                uses: peaceiris/actions-gh-pages@v3
+                if: ${{ github.ref == 'refs/heads/master' }}
+                with:
+                    github_token: ${{ secrets.GITHUB_TOKEN }}
+                    publish_branch: gh-pages
+                    publish_dir: 'build/doctum'
+                    destination_dir: 'docs/api'
+                    exclude_assets: '.github,.gitignore,build/doctum/.cache'
+                    force_orphan: true
+                    keep_files: false
+                    enable_jekyll: false
+                    allow_empty_commit: true
+                    commit_message: 'Update API docs'
+                    user_name: 'github-actions'
+                    user_email: 'github-actions@users.noreply.github.com'

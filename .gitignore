@@ -1,0 +1,24 @@
+# https://git-scm.com/docs/gitignore
+
+.vscode
+.idea
+
+test.php
+vendor/*
+build/*
+!**/.gitkeep
+
+*.phar
+*.bak
+*.cache
+*.lock
+*.xml
+*.log
+*.sql
+*.sqlite
+*.db
+.Trashes
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+._*
