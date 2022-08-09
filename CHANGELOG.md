@@ -4,8 +4,20 @@ All notable changes to **Mighty** will be documented in this file.
 
 <br />
 
+## [[1.0.0-beta] - 2022-08-09](https://github.com/MarwanAlsoltany/mighty/commits/v1.0.0-beta)
+- Beta release.
+
+<br />
+
+## [Unreleased]
+
+<br />
+
 <!-- reference for Changelog formatting -->
 <!--
+
+<br />
+
 ## [[1.0.1] - YYYY-MM-DD](https://github.com/MarwanAlsoltany/mighty/compare/v1.0.0...v1.0.1)
 - Update `Something`:
     - Details ...
@@ -19,17 +31,14 @@ All notable changes to **Mighty** will be documented in this file.
 
 <br />
 
-## [[1.0.0-rc] - XXX-YY-ZZ](https://github.com/MarwanAlsoltany/mighty/compare/v1.0.0-beta...v1.0.0-rc)
+## [[1.0.0-rc] - YYYY-MM-DD](https://github.com/MarwanAlsoltany/mighty/compare/v1.0.0-beta...v1.0.0-rc)
 - Release candidate.
 
 <br />
 
-## [[1.0.0-beta] - XXX-YY-ZZ](https://github.com/MarwanAlsoltany/mighty/commits/v1.0.0-beta)
+## [[1.0.0-beta] - YYYY-MM-DD](https://github.com/MarwanAlsoltany/mighty/commits/v1.0.0-beta)
 - Beta release.
 
 <br />
+
 -->
-
-## [Unreleased]
-
-<br />
