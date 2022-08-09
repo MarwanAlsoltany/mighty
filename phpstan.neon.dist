@@ -15,4 +15,11 @@ parameters:
         nullable: 'null|bool|int|float|string|array|object'
         parameters: 'array<string,mixed>'
     ignoreErrors:
-        - '/bla bla bla/'
+        # thrown for exception that implement an interface that extends Throwable
+        - '/(.+?) is not subtype of Throwable/'
+        # this is a false positive, the side is mostly used for assignment
+        - '/(.+?) side of (.+?) is always \w+/'
+        # this is a false positive, native types are not given the benefit of the doubt
+        - '/Cannot call method \w+\(\) on \w+/'
+        # this is a false positive, where it is raised, it makes simply no sense
+        - '/Instanceof between (.+?) and (.+?) will always evaluate to \w+/'
