@@ -4,6 +4,11 @@ All notable changes to **Mighty** will be documented in this file.
 
 <br />
 
+## [[1.0.0-rc] - 2022-08-09](https://github.com/MarwanAlsoltany/mighty/compare/v1.0.0-beta...v1.0.0-rc)
+- Release candidate.
+
+<br />
+
 ## [[1.0.0-beta] - 2022-08-09](https://github.com/MarwanAlsoltany/mighty/commits/v1.0.0-beta)
 - Beta release.
 
