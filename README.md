@@ -73,7 +73,7 @@
 composer require marwanalsoltany/mighty
 ```
 
-![■](https://user-images.githubusercontent.com/7969982/182090864-09a2573a-59e3-4c82-bf9f-e2b9cd360c27.png) **Note:** *You may need to add the `--stability=dev` depending on the version/branch. You may also want to add `--no-dev` flag to not install development dependencies.*
+![■](https://user-images.githubusercontent.com/7969982/182090864-09a2573a-59e3-4c82-bf9f-e2b9cd360c27.png) **Note:** *You may need to add the `--stability=dev` depending on the version/branch.*
 
 
 ---
