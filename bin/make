@@ -1,0 +1,34 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+echo PHP_EOL;
+
+$code = null;
+
+try {
+    $commands = glob(__DIR__ . '/*');
+
+    foreach ($commands as $command) {
+        if (strpos($command, ($self = basename(__FILE__)) . '-') === false || ($current = basename($command)) === $self) {
+            continue;
+        }
+
+        printf("\nRunning: '%s'\n", $current);
+
+        passthru('php ' . $command, $code);
+
+        if ($command !== end($commands)) {
+            printf("%'-128s\n\n", '');
+        }
+    }
+} catch (Throwable $error) {
+    printf("Error: %s\n%s\n\n", $error->getMessage(), $error->getTraceAsString());
+
+    exit($code);
+}
+
+echo PHP_EOL;
+
+exit($code);
