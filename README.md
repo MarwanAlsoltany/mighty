@@ -891,6 +891,75 @@ The following table lists all available rules including their Attribute and Meth
 ---
 
 
+## Benchmarks
+
+By now it may seem like Mighty is doing too much and performance concerns are starting to arise. Well, there is no need to worry about that. Mighty is really fast and is optimized to provide the best performance. Here are some benchmarks of the performance of the validator:
+
+### Not So Scientific Benchmark
+
+The performance of Mighty Validator and Laravel Validator in a laravel application.
+The test was carried out using an array of 50000 elements, half of them are integers and the other half are numeric strings.
+Each validator was tested 10 times (consecutively) and the average result of these 10 was collected:
+
+```php
+$data = array_merge(range(1, 25000), array_map('strval', range('25001', '50000')));
+// Mighty Validator with XDebug disabled
+[ // required&integer
+  'bootstrapTime'  => '1.32ms',    // the time required to build the array
+  'validationTime' => '1107.29ms', // the time required to validate the array
+  'totalTime'      => '1108.61ms', // the time required for the whole process
+]
+// Mighty Validator with XDebug enabled
+ [ // required&integer
+  'bootstrapTime'  => '9.09ms',
+  'validationTime' => '6085.04ms',
+  'totalTime'      => '6094.13ms',
+]
+// Laravel Validator with XDebug disabled
+[ // required|integer
+  'bootstrapTime'  => '1.33ms',
+  'validationTime' => '13882.72ms',
+  'totalTime'      => '13884.05ms',
+]
+// Laravel Validator with XDebug enabled
+[ // required|integer
+  'bootstrapTime'  => '9.33ms',
+  'validationTime' => '24010.60ms',
+  'totalTime'      => '24019.93ms',
+]
+```
+
+So Mighty is about **12.5X** times faster than Laravel Validator with XDebug disabled and about **4X** times faster with XDebug enabled.
+
+### Scientific Benchmark
+
+The benchmark is done using PHPBench. Here is a quick overview:
+
+```
+PHPBench (1.2.6) running benchmarks...
+with configuration file: mighty/phpbench.json.dist
+with PHP version 8.1.9, xdebug ❌, opcache ❌
+
+\MAKS\Mighty\Benchmarks\ConstraintBench
+
+    benchAValidValidatableObject............I4 ✔ Mo305.595074ops/s (±0.75%)
+    benchAnInvalidValidatableObject.........I4 ✔ Mo326.708522ops/s (±1.02%)
+
+\MAKS\Mighty\Benchmarks\ValidatorBench
+
+    benchSingleValidationString.............I4 ✔ Mo0.02212ms (±1.59%)
+    benchSingleValidationObject.............I4 ✔ Mo0.126929ms (±1.63%)
+    benchBulkValidationObject...............I4 ✔ Mo9.345847ms (±0.62%)
+    benchBulkValidationString...............I4 ✔ Mo6.734188ms (±0.40%)
+
+Subjects: 6, Assertions: 6, Failures: 0, Errors: 0
+```
+
+The results for the benchmark can also be found in the CI pipeline.
+
+---
+
+
 ## Notes
 
 1. Mighty generates really friendly error messages by default. These messages can be easily overwritten on Validator/Constraint bases. You may want to have these messages in different languages, for that, the `MAKS\Mighty\Rule::setMessageTranslator()` method can be used. This method is a convenient way to set a global message translator, it takes a closure that gets the raw message (with placeholders) as an argument and must return the translated version of that message.
