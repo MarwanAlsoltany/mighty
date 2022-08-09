@@ -27,7 +27,7 @@
         </report>
     </coverage>
     <testsuites>
-        <testsuite name="%[packageName]% Test Suite - Unit Tests">
+        <testsuite name="Mighty Test Suite - Unit Tests">
             <directory>tests</directory>
             <exclude>tests/TestCase.php</exclude>
         </testsuite>

@@ -197,9 +197,9 @@ function getRules(): array {
         'header_comment' => [
             'comment_type' => 'PHPDoc',
             'header' => implode(PHP_EOL, [
-                '@author %[authorName]% <%[authorEmail]%>',
+                '@author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>',
                 // the year falls back to the year the config file was created, replace it with code string to make it static
-                '@copyright %[authorName]% ' . (($year = '%[year]%') === '%[year]%' ? gmdate('Y', filectime(__FILE__) ?: time()) : $year),
+                '@copyright Marwan Al-Soltany ' . (($year = '2022') === '2022' ? gmdate('Y', filectime(__FILE__) ?: time()) : $year),
                 'For the full copyright and license information, please view',
                 'the LICENSE file that was distributed with this source code.',
             ]),

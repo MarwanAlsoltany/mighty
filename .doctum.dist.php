@@ -23,8 +23,8 @@ Doctum::$defaultVersionName = 'master';
 return new Doctum($finder, getConfig());
 
 function getConfig(): array {
-    $owner = '%[author]%';
-    $repo  = '%[package]%';
+    $owner = 'MarwanAlsoltany';
+    $repo  = 'mighty';
 
     $filter   = new TrueFilter();
     $remote   = new GitHubRemoteRepository(implode('/', [$owner, $repo]), __DIR__);
@@ -36,7 +36,7 @@ function getConfig(): array {
 
     return [
         'base_url'              => "https://{$owner}.github.io/{$repo}",
-        'title'                 => '%[packageName]% API Docs',
+        'title'                 => 'Mighty API Docs',
         'favicon'               => null,
         'language'              => 'en',
         'filter'                => $filter,
@@ -56,7 +56,7 @@ function getConfig(): array {
             'href'        => "https://github.com/{$owner}/{$repo}",
             'rel'         => 'noreferrer noopener',
             'target'      => '_blank',
-            'before_text' => 'Want to learn more about %[packageName]%? Click ',
+            'before_text' => 'Want to learn more about Mighty? Click ',
             'link_text'   => 'here',
             'after_text'  => 'to view the source code on GitHub!',
         ],

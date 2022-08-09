@@ -1,35 +1,45 @@
 {
-    "name": "%[author]%/%[package]%",
+    "name": "marwanalsoltany/mighty",
     "type": "library",
     "license": "MIT",
-    "description": "%[description]%",
+    "description": "The last validation library you will ever need!",
     "keywords": [
         "php",
-        "library"
+        "library",
+        "validation",
+        "rules",
+        "attributes",
+        "annotations",
+        "expression",
+        "expressive",
+        "framework",
+        "framework-agnostic"
     ],
     "authors": [
         {
             "name": "Marwan Al-Soltany",
             "email": "MarwanAlsoltany+gh@gmail.com"
-        },
-        {
-            "name": "%[authorName]%",
-            "email": "%[authorEmail]%"
         }
     ],
     "funding": [
         {
             "type": "ko-fi",
-            "url": "https://ko-fi.com/%[author]%"
+            "url": "https://ko-fi.com/marwanalsoltany"
         }
     ],
-    "homepage": "https://github.com/%[author]%/%[package]%#readme",
+    "homepage": "https://github.com/MarwanAlsoltany/mighty/blob/master/README.md",
     "support": {
-        "docs": "https://github.com/%[author]%/%[package]%/blob/master/README.md",
-        "issues": "https://github.com/%[author]%/%[package]%/issues"
+        "docs": "https://marwanalsoltany.github.io/mighty/docs/api",
+        "source": "https://github.com/MarwanAlsoltany/mighty",
+        "issues": "https://github.com/MarwanAlsoltany/mighty/issues"
     },
     "require": {
-        "php" : ">=8.0"
+        "php": ">=8.1",
+        "ext-mbstring": "*",
+        "ext-ctype": "*",
+        "ext-json": "*",
+        "ext-dom": "*",
+        "ext-intl": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
@@ -40,17 +50,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Vendor\\Package\\": "src"
+            "MAKS\\Mighty\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Vendor\\Package\\": "tests"
+            "MAKS\\Mighty\\": "tests"
         }
     },
-    "bin": [
-        "bin/executable"
-    ],
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
