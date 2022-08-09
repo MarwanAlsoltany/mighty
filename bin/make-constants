@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+echo PHP_EOL, PHP_EOL;
+
+try {
+    $path = MAKS\Mighty\Validation\Maker::makeConstants();
+
+    printf("Generated rule names and aliases constants in file: '%s'\n", $path);
+} catch (Throwable $error) {
+    printf("Error: %s\n%s\n\n", $error->getMessage(), $error->getTraceAsString());
+
+    exit(1);
+}
+
+echo PHP_EOL, PHP_EOL;
+
+exit(0);
