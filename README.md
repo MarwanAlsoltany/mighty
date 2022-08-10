@@ -36,7 +36,7 @@
 [Examples](#examples)<br/>
 [Constrains](#constraints)<br/>
 [Validations](#validations)<br/>
-[Documentation](https://marwanalsoltany.github.io/mighty/docs/api)
+[Documentation](https://marwanalsoltany.github.io/mighty/docs/api)<br/>
 [Specification](./SPECIFICATION.md)<br/>
 [Changelog](./CHANGELOG.md)<br/>
 
@@ -283,6 +283,8 @@ $object->check();
 
 Check also [`ValidatableObject`](./Tests/Mocks/ValidatableObject.php) and [`ValidatableObjectChild`](./Tests/Mocks/ValidatableObjectChild.php).
 
+![■](https://user-images.githubusercontent.com/7969982/182090863-c6bf7159-7056-4a00-bc97-10a5d296c797.png) **Hint:** *More examples can be found in the [Examples](#examples) section.*
+
 
 ---
 
@@ -416,17 +418,29 @@ $data = [
 
 $validations = [
     'name'           => $validator->validation()->required()->string()->stringCharset(['UTF-8', 'ASCII'])->pessimistic(),
+    // or using mVEL => required&string&string.charset:'["UTF-8","ASCII"]'
     'age'            => $validator->validation()->required()->integer()->min(18),
+    // or using mVEL => required&integer&min:18
     'email'          => $validator->validation()->required()->email()->macro('gmail'),
+    // or using mVEL => required&email&[gmail]
     'username'       => $validator->validation()->required()->username(),
+    // or using mVEL => required&username
     'password'       => $validator->validation()->required()->password()->callback(fn ($input) => !PasswordService::isPwned($input)),
+    // or using mVEL => required&password (NOTE: callback ist not possible, it requires a Validation::class instance that is bound to the Validator::class instance)
     'image'          => $validator->validation()->null()->xor()->group(fn () => $this->image()->imageDimensions(1920, 1080, '<=')),
+    // or using mVEL => null^(image&image.dimensions:1920,1080,"<=")
     'submission'     => $validator->validation()->required()->datetime()->datetimeLt('2022-12-07'),
-    'consent'        => $validator->validation()->assert('${age.value}', 18, '>=')->or()->accepted()->and()->assertEquals('${this}', 'granted')->optimistic(),
+    // or using mVEL => required&datetime&datetime.lt:"2022-12-07"
+    'consent'        => $validator->validation()->assert('${age.value}', 18, '>=')->or()->accepted()->or()->assertEquals('${this}', 'granted')->optimistic(),
+    // or using mVEL => ?assert:${age.value},18,">="|accepted|assert.equals:${this},"granted"
     'data'           => $validator->validation()->required()->array()->arrayHasKey('nickname'),
+    // or using mVEL => required&array&array.hasKey:"nickname"
     'data.*'         => $validator->validation()->scalar()->or()->array()->optimistic(),
+    // or using mVEL => ?scalar|array
     'data.nickname'  => $validator->validation()->string()->min(2)->max(32),
+    // or using mVEL => string&min:2&max:32
     'data.hobbies.*' => $validator->validation()->ifEq('${data.hobbies.validations.array}', false)->or()->group(fn () => $this->string()->min(3)),
+    // or using mVEL => if.eq:${data.hobbies.validations.array},false|(string&min:3)
 ];
 
 $labels = [
@@ -441,7 +455,7 @@ $labels = [
 ];
 
 $messages = [
-    '*' => [
+    '*' => [ // this will be expanded for all fields
         'required' => '${@label} is a required field.',
     ],
     'age' => [
@@ -489,6 +503,8 @@ $results = $validator->getResults();
 
 // you can also simply use the static helper Validator::validateData($data, $validations);
 ```
+
+![■](https://user-images.githubusercontent.com/7969982/182090863-c6bf7159-7056-4a00-bc97-10a5d296c797.png) **Hint:** *When providing message overrides to the `Validator::class`, it is advised to use the [`Rule\Validation::class`](./src/Rule/Validation.php) to set array keys. This class contains all Mighty built-in rules names as class constants.*
 
 ### Extending the Validator
 
@@ -905,27 +921,27 @@ Each validator was tested 10 times (consecutively) and the average result of the
 $data = array_merge(range(1, 25000), array_map('strval', range('25001', '50000')));
 // Mighty Validator with XDebug disabled
 [ // required&integer
-  'bootstrapTime'  => '1.32ms',    // the time required to build the array
-  'validationTime' => '1107.29ms', // the time required to validate the array
-  'totalTime'      => '1108.61ms', // the time required for the whole process
+  'preparationTime' => '1.32ms',    // the time required to build the array
+  'validationTime'  => '1107.29ms', // the time required to validate the array
+  'totalTime'       => '1108.61ms', // the time required for the whole process
 ]
 // Mighty Validator with XDebug enabled
  [ // required&integer
-  'bootstrapTime'  => '9.09ms',
-  'validationTime' => '6085.04ms',
-  'totalTime'      => '6094.13ms',
+  'preparationTime' => '9.09ms',
+  'validationTime'  => '6085.04ms',
+  'totalTime'       => '6094.13ms',
 ]
 // Laravel Validator with XDebug disabled
 [ // required|integer
-  'bootstrapTime'  => '1.33ms',
-  'validationTime' => '13882.72ms',
-  'totalTime'      => '13884.05ms',
+  'preparationTime' => '1.33ms',
+  'validationTime'  => '13882.72ms',
+  'totalTime'       => '13884.05ms',
 ]
 // Laravel Validator with XDebug enabled
 [ // required|integer
-  'bootstrapTime'  => '9.33ms',
-  'validationTime' => '24010.60ms',
-  'totalTime'      => '24019.93ms',
+  'preparationTime' => '9.33ms',
+  'validationTime'  => '24010.60ms',
+  'totalTime'       => '24019.93ms',
 ]
 ```
 
@@ -955,14 +971,14 @@ with PHP version 8.1.9, xdebug ❌, opcache ❌
 Subjects: 6, Assertions: 6, Failures: 0, Errors: 0
 ```
 
-The results for the benchmark can also be found in the CI pipeline.
+![■](https://user-images.githubusercontent.com/7969982/182090858-f98dc83e-da1c-4f14-a538-8ac0a9bc43c3.png) **Fact:** *The most recent benchmark result can also be found in the CI pipeline, which will be updated with each Push/PR to the upsteam.*
 
 ---
 
 
 ## Notes
 
-1. Mighty generates really friendly error messages by default. These messages can be easily overwritten on Validator/Constraint bases. You may want to have these messages in different languages, for that, the `MAKS\Mighty\Rule::setMessageTranslator()` method can be used. This method is a convenient way to set a global message translator, it takes a closure that gets the raw message (with placeholders) as an argument and must return the translated version of that message.
+1. Mighty generates really friendly error messages by default (currently only in English). These messages can be easily overwritten on Validator/Constraint bases. You may want to have these messages in different languages, for that, the `MAKS\Mighty\Rule::setMessageTranslator()` method can be used. This method is a convenient way to set a global message translator, it takes a closure that gets the raw message (with placeholders) as an argument and must return the translated version of that message.
 2. Refer to the [Mighty Validation Expression Language Specification](./SPECIFICATION.md) to learn more about the theory behind Mighty and to get a grasp of how the language works.
 3. Refer to [Mighty API Documentation](https://marwanalsoltany.github.io/mighty/docs/api) to learn more about the PHP API. The API is well-documented and there shouldn't be anything that is not covered there.
 4. Mighty is currently a pure validation library, it doesn't do any kind of transformation on the data. The engine and the current design is flexible enough and can be used to easily implement a Sanitizer on top of it, there is no plan to make this at the moment but it may be a future milestone.
@@ -988,7 +1004,7 @@ Copyright (c) 2022 Marwan Al-Soltany. All rights reserved.
 
 
 <!-- edit icons as needed -->
-[php-icon]: https://img.shields.io/badge/php-%3E=8.0-yellow?style=flat&logo=php
+[php-icon]: https://img.shields.io/badge/php-%3E=8.1-yellow?style=flat&logo=php
 [version-icon]: https://img.shields.io/packagist/v/MarwanAlsoltany/mighty.svg?style=flat&logo=packagist
 [downloads-icon]: https://img.shields.io/packagist/dt/MarwanAlsoltany/mighty.svg?style=flat&logo=packagist
 [license-icon]: https://img.shields.io/badge/license-MIT-red.svg?style=flat&logo=github
