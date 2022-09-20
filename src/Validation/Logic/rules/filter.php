@@ -36,7 +36,7 @@ return [
                     'min' => $min = strpos($rule->getStatement(), ':') !== false ? $min : PHP_INT_MIN,
                     'max' => $max = strpos($rule->getStatement(), ',') !== false ? $max : PHP_INT_MAX,
                 ],
-            ] + $rule->getVariables() ?? []);
+            ] + ($rule->getVariables() ?? []));
 
             $result = filter_var($input, FILTER_VALIDATE_INT, [
                 'default' => false,
@@ -64,7 +64,7 @@ return [
                     'min' => $min = strpos($rule->getStatement(), ':') !== false ? $min : PHP_INT_MIN,
                     'max' => $max = strpos($rule->getStatement(), ',') !== false ? $max : PHP_INT_MAX,
                 ],
-            ] + $rule->getVariables() ?? []);
+            ] + ($rule->getVariables() ?? []));
 
             $result = filter_var($input, FILTER_VALIDATE_INT, [
                 'default' => false,
@@ -92,7 +92,7 @@ return [
                     'min' => $min = strpos($rule->getStatement(), ':') !== false ? $min : PHP_INT_MIN,
                     'max' => $max = strpos($rule->getStatement(), ',') !== false ? $max : PHP_INT_MAX,
                 ],
-            ] + $rule->getVariables() ?? []);
+            ] + ($rule->getVariables() ?? []));
 
             $result = filter_var($input, FILTER_VALIDATE_INT, [
                 'default' => false,
@@ -120,7 +120,7 @@ return [
                     'min' => $min = strpos($rule->getStatement(), ':') !== false ? $min : PHP_FLOAT_MIN,
                     'max' => $max = strpos($rule->getStatement(), ',') !== false ? $max : PHP_FLOAT_MAX,
                 ],
-            ] + $rule->getVariables() ?? []);
+            ] + ($rule->getVariables() ?? []));
 
             $result = filter_var($input, FILTER_VALIDATE_FLOAT, [
                 'default' => false,
@@ -148,7 +148,7 @@ return [
                     'min' => $min = strpos($rule->getStatement(), ':') !== false ? $min : PHP_FLOAT_MIN,
                     'max' => $max = strpos($rule->getStatement(), ',') !== false ? $max : PHP_FLOAT_MAX,
                 ],
-            ] + $rule->getVariables() ?? []);
+            ] + ($rule->getVariables() ?? []));
 
             $result = filter_var($input, FILTER_VALIDATE_FLOAT, [
                 'default' => false,
