@@ -111,30 +111,15 @@ $validator
     ])
     ->setValidations([
         // required&string&between:3,255
-        'name' => $validator
-            ->validation()
-            ->required()
-            ->string()
-            ->between(3, 255),
+        'name'      => $validator->validation()->required()->string()->between(3, 255),
         // required&string&matches:/[a-z0-9._-]/i
-        'username' => $validator
-            ->validation()
-            ->required()
-            ->string()
-            ->matches('/[a-z0-9._-]/i'),
+        'username'  => $validator->validation()->required()->string()->matches('/[a-z0-9._-]/i'),
         // required&string&min:8
-        'password' => $validator
-            ->validation()
-            ->required()
-            ->string()
-            ->min(8),
+        'password'  => $validator->validation()->required()->string()->min(8),
         // required&email
-        'email' => $validator
-            ->validation()
-            ->required()
-            ->email(),
+        'email'     => $validator->validation()->required()->email(),
         // null^(required&array&max:5)
-        'hobbies' => $validator
+        'hobbies'   => $validator
             ->validation()
             ->null()
             ->xor()
@@ -355,12 +340,14 @@ use MAKS\Mighty\Validator;
 $result = ($validator = new Validator())
     ->validateOne(
         '123',
-        // can be an integer or float or a string that is numeric
         $validator
             ->validation()
+            // can be an integer or float or a string that is numeric
+            // this example is only for demonstration only,
+            // the same result can be achieved using numeric() only
             ->integer()->or()->float()->or()->group(
                 fn ($validation) => $validation->string()->and()->numeric()
-            ) // this is an example, the same result can be achieved using numeric() only
+            )
     )
     ->toArray();
 
