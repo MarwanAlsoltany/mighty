@@ -32,7 +32,7 @@ return [
 
             $rule->setVariables([
                 '@extra' => compact('actual', 'expected', 'operator'),
-            ] + $rule->getVariables() ?? []);
+            ] + ($rule->getVariables() ?? []));
 
             $assert = Inspector::OPERATIONS[$operator] ?? Inspector::OPERATIONS['=='];
             $result = $assert($actual, $expected);
