@@ -53,11 +53,26 @@ class Shape extends Constraint implements ValidatesMany
             ])
             ->setValidations([
                 'fields'   => $validator->validation()->required()->array()->min(1),
-                'fields.*' => $validator->validation()->required()->object()->objectIsInstanceOf(Constraint::class),
+                'fields.*' => $validator->validation()->required()->object()->callback(static fn ($input) => $input instanceof Constraint && (
+                    /** @var object $input */
+                    // here the check is for the actual class and not a sub-class
+                    $input::class === Constraint::class ||
+                    $input instanceof Rule ||
+                    $input instanceof Compound
+                ), 'objectType'),
             ])
             ->setLabels([
                 'fields'   => 'Fields',
                 'fields.*' => 'Fields array item',
+            ])
+            ->setMessages([
+                'fields.*' => [
+                    'callback.objectType' => Utility::interpolate(
+                        '${@label} must be an actual instance of %constraint%, or an instance %rule% or %compound%',
+                        ['constraint' => Constraint::class, 'rule' => Rule::class, 'compound' => Compound::class],
+                        '%%'
+                    ),
+                ],
             ])
             ->check();
 
