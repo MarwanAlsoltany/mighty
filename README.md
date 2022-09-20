@@ -32,9 +32,9 @@
 [Installation](#installation)<br/>
 [About Mighty](#about-mighty)<br/>
 [Quickstart](#quickstart)<br/>
-[Mighty Validation Expression Language](#mighty-validation-expression-language)<br/>
+[mVEL](#mighty-validation-expression-language)<br/>
 [Examples](#examples)<br/>
-[Constrains](#constraints)<br/>
+[Constraints](#constraints)<br/>
 [Validations](#validations)<br/>
 [Documentation](https://marwanalsoltany.github.io/mighty/docs/api)<br/>
 [Specification](./SPECIFICATION.md)<br/>
@@ -72,8 +72,6 @@
 ```sh
 composer require marwanalsoltany/mighty
 ```
-
-![■](https://user-images.githubusercontent.com/7969982/182090864-09a2573a-59e3-4c82-bf9f-e2b9cd360c27.png) **Note:** *You may need to add the `--stability=dev` depending on the version/branch.*
 
 
 ---
@@ -619,7 +617,10 @@ This group contains attributes that do a specific job that is available only in 
 - [`Callback`](./src/Validation/Constraint/Callback.php): This attribute is used to validate any data using a callback function.
 - [`Valid`](./src/Validation/Constraint/Valid.php): This attribute is used to validate the validity of a validatable object.
 - [`Shape`](./src/Validation/Constraint/Shape.php): This attribute is used to validate the shape of an array or object. Note that this is the only attribute that validates a set of values (structured data) rather than a single value.
-- [`Compound`](./src/Validation/Constraint/Compound.php): This attribute is used to combine a set of constraints to build up a Validation Expression. The constraints can be combined using any operator, and can also have a behavior. It serves as an object-oriented way to build up a Validation Expression. Note that the constraints that are allowed to be used with this attribute must be an actual instance of the `Constraint::class`, `Rule::class`, or `Compound::class` (only the `Compound` and `Rule` of the Special Constraint Attributes Group are allowed).
+- [`Compound`](./src/Validation/Constraint/Compound.php): This attribute is used to combine a set of constraints to build up a Validation Expression. The constraints can be combined using any operator, and can also have a behavior. It serves as an object-oriented way to build up a Validation Expression.
+
+![■](https://user-images.githubusercontent.com/7969982/182090864-09a2573a-59e3-4c82-bf9f-e2b9cd360c27.png) **Note:** *Note that the constraints that are allowed to be used with the `Shape::class` and `Compound::class` attributes must be an actual instances of the `Constraint::class`, `Rule::class`, or `Compound::class`. The `Callback::class`, `Valid::class`, or `Shape::class` of the **Special Constraint Attributes Group** are NOT allowed.*
+
 
 ### Rule Constraint Attributes Group
 
@@ -1036,5 +1037,5 @@ Copyright (c) 2022 Marwan Al-Soltany. All rights reserved.
 <!-- [codacy-coverage-href]: https://app.codacy.com/project/badge/Coverage/YOUR_CODACY_PROJECT_TOKEN -->
 <!-- [codacy-grade-href]: https://app.codacy.com/project/badge/Grade/YOUR_CODACY_PROJECT_TOKEN -->
 [vscode-href]: https://open.vscode.dev/MarwanAlsoltany/mighty
-[tweet-href]: https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2FMarwanAlsoltany%2Fmighty&text=Mighty.%20The%20last%20validation%20libraray%20you%20will%20ever%20need%21
+[tweet-href]: https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2FMarwanAlsoltany%2Fmighty&text=Mighty.%20The%20last%20validation%20library%20you%20will%20ever%20need%21%20%23PHP
 [github-stars-href]: https://github.com/MarwanAlsoltany/mighty/stargazers
