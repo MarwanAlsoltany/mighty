@@ -122,7 +122,9 @@ class Rule extends Definition implements Stringable
      * Sets rule messages global translator.
      *
      * @param Closure $translator Rule messages translator callback.
-     *      The callback will be passed a string (`$message` before injecting placeholders) and must return a string.
+     *      The callback will be passed the following arguments and must return a string:
+     *      - The `$message` before injecting the placeholders.
+     *      - The `$name` of the rule.
      */
     public static function setMessageTranslator(Closure $translator): void
     {
@@ -315,7 +317,7 @@ class Rule extends Definition implements Stringable
         $message   = ($message ?? '') ?: $messageFallback;
         $variables = ($variables ?? []) + $variablesFallback;
 
-        $message = (static::$translator)($message);
+        $message = (static::$translator)($message, $this->getName());
 
         $result = Utility::injectInString((string)$message, (array)$variables);
 
