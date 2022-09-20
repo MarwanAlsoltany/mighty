@@ -6,10 +6,10 @@
 
 ## Abstract
 
-The Mighty Validation Expression Language is an language that can be used to describe to a Validation Interface (Validator), how data should be validated against a set of validation rules that follow specific guidelines.
+The Mighty Validation Expression Language is a language that can be used to describe to a Validation Interface (Validator), how data should be validated against a set of validation rules that follow specific guidelines.
 
 This expression language is straightforward, readable, and easy to get along with.
-It is a combination of well established and already existing concepts and/or specifications like [Boolean Algebra](https://en.wikipedia.org/wiki/Boolean_algebra), [Bitwise Operators](https://en.wikipedia.org/wiki/Bitwise_operation#Bitwise_operators), [JSON](https://en.wikipedia.org/wiki/JSON), and [CSV](https://en.wikipedia.org/wiki/Comma-separated_values). This makes learning the language a matter of minutes no matter what background the learner has, as long as they have a basic understanding of the concepts.
+It is a combination of well established and already existing concepts and/or specifications like [Boolean Algebra](https://en.wikipedia.org/wiki/Boolean_algebra), [Bitwise Operators](https://en.wikipedia.org/wiki/Bitwise_operation#Bitwise_operators), [JSON](https://en.wikipedia.org/wiki/JSON), and [CSV](https://en.wikipedia.org/wiki/Comma-separated_values). This makes learning the language a matter of minutes no matter what background the learner has, as long as they have a basic understanding of the concepts (an example can be found [here](#710-practical-validation-example)).
 
 Validation Expression may be defined as a string that contains some rules separated by **Bitwise Operators** which will build an expression that when evaluated using **Boolean Algebra** logic, will result in the final result of the validation. The rules can have arguments, the types of these arguments can be denoted using the same rules of **JSON** types. A rule can also have multiple arguments and the arguments are separated by commas (**CSV**).
 
@@ -101,7 +101,7 @@ The Validation Expression MAY contain zero or more of the following operators:
 | 4 | **XOR** | `^` (caret) | Exclusive Disjunction |
 | 5 | **OPEN** | `(` (opening parenthesis) | Open |
 | 6 | **CLOSE** | `)` (closing parenthesis) | Close |
-| 7 | **GROUP** | `(` and `)` pairs (parentheses) | Precedence |
+| 7 | **GROUP** | `(` and `)` pairs (parentheses) | Precedence / Group |
 
 Few notes regarding the operators MUST be taken into account:
 
@@ -201,7 +201,7 @@ An alias is as simple as a another name for an existing rule. This new name can 
 
 ### 6.2.0 Macros
 
-Macros on the other hand are a way to group a set of rules (i.e. sub-expression) that can be referenced/called using the syntax `[macro]` inside the Validation Expression. Macros are used normally to reuse a common or repeated set of rules, or to make the final Validation Expression more compact.
+Macros on the other hand are a way to group a set of rules (i.e. sub-expression) that can be referenced/called using the syntax `[macro]` inside the Validation Expression. Macros are used normally to reuse a common or a repeated set of rules, or to make the final Validation Expression more compact.
 
 ### 6.3.0 Back-References
 
