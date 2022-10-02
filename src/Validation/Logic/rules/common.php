@@ -27,7 +27,7 @@ return [
         })
         ->parameters(['@input', '@arguments.0'])
         ->comparison(['@output', '!=', false])
-        ->message('${@label} must be a valid UUID-{@arguments.0:[v1/v2/v3/v4/v5]}.')
+        ->message('${@label} must be a valid UUID-${@arguments.0:[v1/v2/v3/v4/v5]}.')
         ->example('uuid')
         ->description('Asserts that the input is a valid UUID. The version (v1/v2/v3/v4/v5) can be specifed to narrow the pattern.'),
 
