@@ -97,7 +97,7 @@ return [
         ->name('if.lt')
         ->arguments(['mixed', 'mixed'])
         ->comparison(['@arguments.0', 'lt', '@arguments.1'])
-        ->message('Falsy condition: ${@arguments.0} must be less than {@arguments.1}.')
+        ->message('Falsy condition: ${@arguments.0} must be less than ${@arguments.1}.')
         ->example('if.lt:1,2')
         ->description('Checks the condition between the first argument and the second argument, the condition operator is "<".'),
 
@@ -105,7 +105,7 @@ return [
         ->name('if.lte')
         ->arguments(['mixed', 'mixed'])
         ->comparison(['@arguments.0', 'lte', '@arguments.1'])
-        ->message('Falsy condition: {@arguments.0} must be less than or equal to {@arguments.1}.')
+        ->message('Falsy condition: ${@arguments.0} must be less than or equal to ${@arguments.1}.')
         ->example('if.lte:1,2')
         ->description('Checks the condition between the first argument and the second argument, the condition operator is "<=".'),
 
