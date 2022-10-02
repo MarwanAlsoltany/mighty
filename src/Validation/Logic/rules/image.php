@@ -71,7 +71,7 @@ return [
         ->callback(fn (mixed $input, int $height): bool => is_string($input) && file_exists($input) && ($info = getimagesize($input)) && $info[1] <= $height)
         ->parameters(['@input', '@arguments.0'])
         ->comparison(['@output', '===', true])
-        ->message('${@label} must be an image and its height must be less than or equal to {@arguments.0} pixels.')
+        ->message('${@label} must be an image and its height must be less than or equal to ${@arguments.0} pixels.')
         ->example('image.height.lte:1080')
         ->description('Asserts that the input is an image and its height is less than or equal to the given height in pixels.'),
 
@@ -81,7 +81,7 @@ return [
         ->callback(fn (mixed $input, int $height): bool => is_string($input) && file_exists($input) && ($info = getimagesize($input)) && $info[1] >= $height)
         ->parameters(['@input', '@arguments.0'])
         ->comparison(['@output', '===', true])
-        ->message('{@label} must be an image and its height must be greater than or equal to {@arguments.0} pixels.')
+        ->message('${@label} must be an image and its height must be greater than or equal to ${@arguments.0} pixels.')
         ->example('image.height.gte:1080')
         ->description('Asserts that the input is an image and its height is greater than or equal to the given height in pixels.'),
 
@@ -99,7 +99,7 @@ return [
         })
         ->parameters(['@input', '@arguments.0', '@arguments.1', '@arguments.2:=='])
         ->comparison(['@output', '===', true])
-        ->message('{@label} must be an image and its dimensions must be {@arguments.2:==} {@arguments.0}x{@arguments.1}px.')
+        ->message('${@label} must be an image and its dimensions must be ${@arguments.2:==} ${@arguments.0}x${@arguments.1}px.')
         ->example('image.dimensions:1920,1080,==')
         ->description('Asserts that the input is an image and its dimensions are less than, equal to, or greater than the given width and height in pixels.'),
 
@@ -120,7 +120,7 @@ return [
         })
         ->parameters(['@input', '@arguments.0'])
         ->comparison(['@output', '===', true])
-        ->message('{@label} must be an image and its ratio must be equal to {@arguments.0}.')
+        ->message('${@label} must be an image and its ratio must be equal to ${@arguments.0}.')
         ->example('image.ratio:16:9')
         ->description('Asserts that the input is an image and its aspect ratio is equal to the given ratio (ratio must be specified as fraction like "16/9").'),
 
