@@ -179,17 +179,17 @@ class Engine
      *
      * @param string $expression Validation expression string.
      *
-     * @return array<string,string> An associative array where key is the rule name and value is the rule statement.
+     * @return array<array<string,string>> An array of arrays where each of the nested arrays contains rule name and rule statement.
      */
     public static function parseExpression(string $expression): array
     {
-        $cacheKey = $expression;
+        $expression = ltrim($expression, '!?'); // remove behavior if there is any
+
+        $cacheKey = md5($expression);
 
         if (Memoizer::pool(__METHOD__)->has($cacheKey)) {
             return Memoizer::pool(__METHOD__)->get($cacheKey);
         }
-
-        $expression = ltrim($expression, '!?'); // remove behavior if there is any
 
         // replace JSON-like strings with temporary placeholders to prevent conflicts
         // with rule arguments escaping quotes and splitting characters, this is done because
@@ -210,12 +210,15 @@ class Engine
         // which are not inside balanced single quotes (escaped)
         $rulesRegex  = "/[\~\&\|\^\(\)](?=([^']*['][^']*['])*[^']*$)/u";
         $rulesString = $expression;
-        $rulesArray  = array_map('trim', preg_split($rulesRegex, $rulesString) ?: []);
-        $rulesValues = array_filter($rulesArray);
-        $rulesNames  = array_map(fn ($rule) => strstr($rule, ':', true) ?: $rule, $rulesValues);
-        $rules       = array_combine($rulesNames, $rulesValues);
-        // restore the JSON-like strings
-        $result       = array_map(fn ($rule) => strtr($rule, $jsonLikes), $rules);
+        $rulesArray  = preg_split($rulesRegex, $rulesString) ?: []; // spit rules
+        $rulesArray  = array_map('trim', $rulesArray); // trim rules
+        $rulesArray  = array_filter($rulesArray); // remove empty rules
+        $rulesArray  = array_values($rulesArray); // reindex rules
+        $result      = array_map(fn ($rule) => [
+            // extract name and statement and inject placeholders back
+            'name'      => strstr($rule, ':', true) ?: $rule,
+            'statement' => strtr($rule, $jsonLikes),
+        ], $rulesArray);
 
         Memoizer::pool(__METHOD__)->set($cacheKey, $result);
 
