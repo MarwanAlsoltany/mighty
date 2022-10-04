@@ -510,47 +510,31 @@ class Validator
         $behavior   = $behaviors[$behavior] ?? null;
         $validation = $behavior === null ? $validation : substr($validation, 1);
 
-        $expression  = $rules = $validation;
-        $bits        = [];
+        $expression  = $rules = Engine::cleanExpression($validation);
+        $results     = [];
         $validations = [];
 
         $checks = Engine::parseExpression($expression);
 
-        foreach ($checks as $name => $statement) {
+        foreach ($checks as ['name' => $name, 'statement' => $statement]) {
             $result = $this->executeRule($name, $statement, $value);
 
-            $validations[$name] = $result;
-            $bits[$statement]   = (string)(int)(bool)$result; // (string)(int)(bool) to cast to a bit ('0' or '1')
-
-            // replace the rule (statement) with its result (bit) to build up the bitwise expression
-            // here only the first occurrence of the rule (statement) will be replaced because some rules
-            // can be a substring of other rules, which will mess up the expression and render it useless
-            $expression = substr_replace($expression, $bits[$statement], intval(strpos($expression, $statement)), strlen($statement));
+            $validations[$name] = $results[$statement] = $result;
 
             // if the validation is optimistic/pessimistic and the current result matches a behavior, stop the validation
             if ($result === $behavior) {
-                // fill all not executed validations with null
-                $results      = array_fill_keys(array_keys($checks), null);
-                $validations  = array_merge($results, $validations);
-                // replace all not replaced rules in the expression with either '0' or '1'
-                $results      = array_fill(0, count($checks), (string)(int)(bool)$behavior);
-                $replacements = array_combine(array_values($checks), $results);
-
-                $expression   = strtr($expression, $replacements);
+                $names       = array_column($checks, 'name');
+                $statements  = array_column($checks, 'statement');
+                // fill all not executed validations with null (indicating that they weren't executed)
+                $validations = array_merge(array_fill_keys($names, null), $validations);
+                // fill all not executed statements results with matching behavior result
+                $results     = array_merge(array_combine($statements, array_fill(0, count($checks), $behavior)), $results);
 
                 break;
             }
         }
 
-        // the loop above will replace only the first occurrence of the rule
-        // sometimes the same rule is added more than once, this should never happen
-        // but to mitigate that error, replace any left over rules in the expression
-        // with their corresponding bits (using the cached $bits array)
-        $expression = strtr($expression, $bits);
-        // remove whitespace from the expression
-        $expression = strtr($expression, [' ' => '']);
-
-        $result = Engine::evaluateBitwiseExpression($expression);
+        ['result' => $result, 'expression' => $expression] = Engine::evaluateExpression($expression, $results);
 
         $errors = $result ? [] : $this->createErrorMessages($validations);
 
