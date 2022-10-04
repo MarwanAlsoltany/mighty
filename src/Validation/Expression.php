@@ -22,7 +22,7 @@ use MAKS\Mighty\Exception\InvalidValidationExpressionException;
 /**
  * Validation expression builder.
  *
- * Implementation of the Mighty Validation Expression Language (mVEL) `v1.0.0`.
+ * Expression Builder implementation for the Mighty Validation Expression Language (mVEL) `v1` (`v1.*.*`).
  *
  * @package Mighty\Validator
  */
@@ -139,7 +139,24 @@ class Expression implements Stringable
 
     /**
      * Writes the passed string to the current expression string buffer.
-     * Note that necessary operators will be added automatically.
+     * Note that the necessary operators will NOT be added automatically (use `self::write()` instead).
+     * Note that this method may make the expression fail when build if it is malformed.
+     *
+     * @param string $string Rule, rule statement, rule alias, rule macro, an operator, a variable, a comment, or any arbitrary string.
+     *
+     * @return static
+     */
+    public function concat(string $string): static
+    {
+        $this->buffer  .= $string;
+        $this->tokens[] = $string;
+
+        return $this;
+    }
+
+    /**
+     * Writes the passed string to the current expression string buffer.
+     * Note that the necessary operators will be added automatically.
      *
      * @param string $string Rule, rule statement, rule alias, rule macro or an operator.
      *
@@ -169,10 +186,7 @@ class Expression implements Stringable
             $this->tokens[] = $operator;
         }
 
-        $this->buffer  .= $current;
-        $this->tokens[] = $current;
-
-        return $this;
+        return $this->concat($current);
     }
 
     /**
@@ -369,16 +383,38 @@ class Expression implements Stringable
      *
      * @param string $key Variable key (without `${}`).
      *
-     * @return string
+     * @return string A valid back-reference or an empty string if the passed parameter was empty.
      *
      * NOTE: This method returns the passed key as a valid back-reference (`${key}`) only,
-     * and NOT the actual value of the variable.
+     * and NOT the actual value of the variable and does NOT add it to the buffer.
      */
     public static function variable(string $key): string
     {
-        $variable = sprintf('${%s}', trim($key, '${ }'));
+        $variable = trim($key, '${ }');
+        $variable = sprintf('${%s}', $variable);
+        $variable = $variable === '${}' ? '' : $variable;
 
         return $variable;
+    }
+
+    /**
+     * Returns a the passed string as a valid comment.
+     *
+     * @param string $text Comment text.
+     *
+     * @return string A valid comment or an empty string if the passed parameter was empty.
+     *
+     * NOTE: This method returns the passed string as a valid comment (`∕*text*∕`) only,
+     * and does NOT add it to the buffer, use `self::concat()` to add it.
+     */
+    public static function comment(string $text): string
+    {
+        $comment = trim($text, '/ *');
+        $comment = str_word_count($comment) > 1 ? " {$comment} " : $comment;
+        $comment = sprintf('/*%s*/', $comment);
+        $comment = $comment === '/**/' ? '' : $comment;
+
+        return $comment;
     }
 
     /**
