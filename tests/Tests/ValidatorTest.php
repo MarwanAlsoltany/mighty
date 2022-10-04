@@ -79,8 +79,8 @@ class ValidatorTest extends TestCase
     public function testValidatorValidateOneMethodWithAnInvalidRulesString(): void
     {
         $this->expectException(InvalidBitwiseExpressionException::class);
-        $this->expectDeprecationMessageMatches('/Invalid bitwise expression/');
-        $this->expectDeprecationMessageMatches('/Infinite loop detected/');
+        $this->expectExceptionMessageMatches('/Invalid bitwise expression/');
+        $this->expectExceptionMessageMatches('/precedence parentheses \["\(", "\)"\] are not balanced/');
 
         // test with a malformed rules string, parentheses are not balanced
         $this->validator->validateOne('123', 'numeric|(string&equals:123');
