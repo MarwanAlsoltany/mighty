@@ -227,6 +227,7 @@ class Engine
      *
      * NOTE: The expression may only contain the following characters: `0`, `1`, `~`, `&`, `|`, `^`, `(`, `)`.
      *      Which are the subset of Bitwise that is the same as Boolean Algebra (returns a boolean value).
+     *      The expression may also have whitespace characters (spaces, tabs, new lines), these will simply be discarded.
      *
      * @param string $expression The bitwise expression to evaluate.
      *
@@ -237,7 +238,7 @@ class Engine
      */
     public static function evaluateBitwiseExpression(string $expression): bool
     {
-        $cacheKey = $expression;
+        $cacheKey = $expression = preg_replace('/\s/', '', $expression); // normalize
 
         if (Memoizer::pool(__METHOD__)->has($cacheKey)) {
             return Memoizer::pool(__METHOD__)->get($cacheKey);
@@ -256,21 +257,21 @@ class Engine
         $checks = [
             'expression string is empty' =>
                 preg_match('/^$/S', $expression) === 1,
-            'precedence parentheses are not balanced' =>
-                preg_match('/(?:^[^()]+$)/S', $expression) === 1 && substr_count($expression, '(') !== substr_count($expression, ')'),
-            'contains characters other than "0, 1, ~, &, |, ^, (, )"' =>
-                preg_match('/(?:^[^01\~\&\|\^\(\)]+$)/S', $expression) === 1,
-            'starts with an operator like "&, |, ^" or ends with an operator like "~, &, |, ^"' =>
+            'contains characters other than ["0", "1", "~", "&", "|", "^", "(", ")"]' =>
+                preg_match('/(?:[^01\~\&\|\^\(\)]+)/S', $expression) === 1,
+            'starts with an operator like ["&", "|", "^"] or ends with an operator like ["~", "&", "|", "^"]' =>
                 preg_match('/(?:^[&|^])|(?:[~&|^]$)/S', $expression) === 1,
-            'an operator like "&, |, ^" is repeated more than once consecutively' =>
+            'an operator like ["&", "|", "^"] is repeated more than once consecutively' =>
                 preg_match('/(?:[&|^]{2,})/S', $expression) === 1,
+            'precedence parentheses ["(", ")"] are not balanced' =>
+                preg_match('/(?:[\(\)])/S', $expression) === 1 && substr_count($expression, '(') !== substr_count($expression, ')'),
         ];
 
         if (in_array(true, $checks, true)) {
             $problems = implode(', ', array_keys(array_filter($checks)));
 
             throw new InvalidBitwiseExpressionException(
-                "Invalid bitwise expression: '{$expression}'. Problem(s): {$problems}"
+                "Invalid bitwise expression: [{$expression}]. Problem(s): {$problems}"
             );
         }
 
