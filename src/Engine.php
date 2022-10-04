@@ -19,6 +19,8 @@ use MAKS\Mighty\Exception\InvalidBitwiseExpressionException;
 /**
  * Validation expression language engine.
  *
+ * Engine/Parser implementation for the Mighty Validation Expression Language (mVEL) `v1` (`v1.*.*`).
+ *
  * @package Mighty
  * @internal
  */
@@ -175,6 +177,41 @@ class Engine
     }
 
     /**
+     * Cleans (minifies) the validation expression by removing comments and unnecessary whitespace from it.
+     *
+     * @param string $expression Validation expression string.
+     *
+     * @return string The cleaned validation expression.
+     *
+     * @since 1.1.0
+     */
+    public static function cleanExpression(string $expression): string
+    {
+        $cacheKey = md5($expression);
+
+        if (Memoizer::pool(__METHOD__)->has($cacheKey)) {
+            return Memoizer::pool(__METHOD__)->get($cacheKey);
+        }
+
+        $patterns = [
+            // search => replacement
+            '/(?:"[^""]*"(*SKIP)(*FAIL)|(?:(?:#|\/\/)[^\r\n]*))/m' => '', // inline comments
+            '/(?:"[^""]*"(*SKIP)(*FAIL)|(?:\/(?:\*.*?\*\/)))/s'    => '', // multiline comments
+            '/(?:"[^""]*"(*SKIP)(*FAIL)|(?:\s+))/'                 => '', // whitespace
+        ];
+
+        $result = preg_replace(
+            array_keys($patterns),
+            array_values($patterns),
+            $expression
+        );
+
+        Memoizer::pool(__METHOD__)->set($cacheKey, $result);
+
+        return $result;
+    }
+
+    /**
      * Parses the validation expression by extracting the validations into an array of checks.
      *
      * @param string $expression Validation expression string.
@@ -223,6 +260,41 @@ class Engine
         Memoizer::pool(__METHOD__)->set($cacheKey, $result);
 
         return $result;
+    }
+
+    /**
+     * Evaluates the passed validation expression string using the provided statements results.
+     *
+     * @param string $expression The validation expression to evaluate.
+     * @param array<string,bool> $results Statements results. An associative array where key is the statement and value is the result.
+     *
+     * @return array<string,string|bool> An associative array containing the resulted bitwise expression and its result.
+     *
+     * @throws InvalidBitwiseExpressionException If the expression resulted in an invalid bitwise expression.
+     * @throws InvalidBitwiseExpressionException If an infinite loop is detected while resolving the expression.
+     *
+     * @since 1.1.0
+     */
+    public static function evaluateExpression(string $expression, array $results): array
+    {
+        foreach ($results as $statement => $result) {
+            // (string)(int)(bool) is used to cast to a bit ('0' or '1')
+            $results[$statement] = $result = (string)(int)(bool)($result);
+
+            // replace the rule (statement) with its result (bit) to build up the bitwise expression
+            // here only the first occurrence of the rule (statement) will be replaced because some rules
+            // can be a substring of other rules, which will mess up the expression and render it useless
+            $expression = substr_replace($expression, $result, intval(strpos($expression, $statement)), strlen($statement));
+        }
+
+        // the loop above will replace only the first occurrence of the rule
+        // sometimes the same rule is added more than once, this should never happen
+        // but to mitigate that error, replace any left over rules in the expression
+        // with their corresponding bits (using the cached $bits array)
+        $expression = strtr($expression, $results);
+        $result     = static::evaluateBitwiseExpression($expression);
+
+        return compact('expression', 'result');
     }
 
     /**
