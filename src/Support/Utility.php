@@ -30,6 +30,8 @@ final class Utility
      *      Fallbacks are used if the value of the provided key does not exist, equals `null`, or an empty string `''`.
      *      Note that type casting is applied when injecting the values (see `Serializer::serialize()` for the expected results).
      * @param array<string,mixed> $variables The variables to get the values from to replace placeholders with their corresponding values.
+     *      To be able to retrieve object properties (or an object within the passed array),
+     *      pass the `$variables` to `self::castToArray()` before passing it to this function.
      *
      * @return string The final string with the variables injected.
      */
@@ -74,6 +76,8 @@ final class Utility
      *      Fallbacks are used if the value of the provided key does not exist, equals `null`, or an empty string `''`.
      *      Note that no type casting is applied when injecting the values.
      * @param array<int|string,mixed> $variables The variables to get the values from to replace placeholders with their corresponding values.
+     *      To be able to retrieve object properties (or an object within the passed array),
+     *      pass the `$variables` to `self::castToArray()` before passing it to this function.
      *
      * @return array<int|string,mixed> The final array with the values injected.
      */
@@ -194,6 +198,8 @@ final class Utility
      * NOTE: Keys with dots in their names have precedence over nested array.
      *
      * @param array<int|string,mixed> $array The array to get the value from.
+     *      To be able to retrieve object properties (or an object within the passed array),
+     *      pass the `$array` to `self::castToArray()` before passing it to this function.
      * @param string $key The key to the value.
      * @param mixed $fallback The fallback value to return if the key has no value or null.
      *
@@ -488,7 +494,7 @@ final class Utility
 
         if ($transformers === null) {
             $transformers = [
-                'clean'     => fn ($string) => self::transform(preg_replace(['/[^\p{L}\p{N}\s]+/', '/[A-Z]+/', '/[\s]+/'], [' ', ' $0', ' '], $string), 'trim'),
+                'clean'     => fn ($string) => self::transform(preg_replace(['/[^\p{L}\p{N}\s]+/u', '/[\p{Lu}]+/u', '/[\s]+/'], [' ', ' $0', ' '], $string), 'trim'),
                 'alnum'     => fn ($string) => self::transform(preg_replace('/[^a-zA-Z0-9 ]+/', '', $string), 'trim'),
                 'alpha'     => fn ($string) => self::transform(preg_replace('/[^a-zA-Z]+/', '', $string), 'trim'),
                 'numeric'   => fn ($string) => self::transform(preg_replace('/[^0-9]+/', '', $string), 'trim'),
@@ -503,8 +509,8 @@ final class Utility
                 'constant'  => fn ($string) => strtr(self::transform($string, 'clean', 'upper'), [' ' => '_']),
                 'cobol'     => fn ($string) => strtr(self::transform($string, 'clean', 'upper'), [' ' => '-']),
                 'train'     => fn ($string) => strtr(self::transform($string, 'clean', 'lower', 'ucwords'), [' ' => '-']),
-                'lower'     => fn ($string) => mb_strtolower($string),
-                'upper'     => fn ($string) => mb_strtoupper($string),
+                'lower'     => fn ($string) => mb_strtolower($string, 'UTF-8'),
+                'upper'     => fn ($string) => mb_strtoupper($string, 'UTF-8'),
                 'spaceless' => fn ($string) => preg_replace('/[\s]+/', '', $string),
             ];
 
