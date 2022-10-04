@@ -2,10 +2,13 @@
 
 /.github export-ignore
 /.gitattributes export-ignore
+/*.json.dist export-ignore
 /*.xml.dist export-ignore
+/*.neon.dist export-ignore
 /*.dist.php export-ignore
 /*.yml export-ignore
 /*.yaml export-ignore
+/bin export-ignore
 /docs export-ignore
 /tests export-ignore
 
