@@ -82,6 +82,19 @@ class ValidationTest extends TestCase
         );
 
         $this->assertEquals(
+            'null^~empty/*nullable*/',
+            (new Validation())
+                ->null()
+                ->xor()
+                ->not()
+                ->empty()
+                ->concat(Validation::comment('nullable'))
+                ->concat(Validation::comment('')) // should add nothing
+                ->concat(Validation::variable('')) // should add nothing
+                ->build()
+        );
+
+        $this->assertEquals(
             '(integer|(string&numeric))^[nullable]',
             Validation::new()
                 ->group(function () {
