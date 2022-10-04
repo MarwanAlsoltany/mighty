@@ -395,12 +395,12 @@ class Expression implements Stringable
         $checks = [
             'no rules were added (expression string is empty)' =>
                 preg_match('/^$/S', $expression) === 1,
-            'precedence parentheses are not balanced' =>
-                preg_match('/(?:^[^()]+$)/S', $expression) === 1 && substr_count($expression, '(') !== substr_count($expression, ')'),
-            'starts with an operator like "&, |, ^" or ends with an operator like "~, &, |, ^"' =>
+            'starts with an operator like ["&", "|", "^"] or ends with an operator like ["~", "&", "|", "^"]' =>
                 preg_match('/(?:^[&|^])|(?:[~&|^]$)/S', $expression) === 1,
-            'an operator like "&, |, ^" is repeated more than once consecutively' =>
+            'an operator like ["&", "|", "^"] is repeated more than once consecutively' =>
                 preg_match('/(?:[&|^]{2,})/S', $expression) === 1,
+            'precedence parentheses ["(", ")"] are not balanced' =>
+                preg_match('/(?:[\(\)])/S', $expression) === 1 && substr_count($expression, '(') !== substr_count($expression, ')'),
         ];
 
         if (in_array(true, $checks, true)) {
