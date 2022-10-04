@@ -15,7 +15,7 @@ Validation Expression may be defined as a string that contains some rules separa
 
 ## Overview
 
-This is the Draft for Version `1.0.0` of the Mighty Validation Expression Language. The specification may be updated/changed in the future. The updated version will follow the [Semantic Versioning](https://semver.org/) standard.
+This is the Draft for Version `1.1.0` of the Mighty Validation Expression Language (check out [Spec History](https://github.com/MarwanAlsoltany/mighty/commits/master/SPECIFICATION.md)). The specification may be updated/changed in the future. The updated version will follow the [Semantic Versioning](https://semver.org/) standard.
 
 The Mighty Validation Expression Language may be referred to for short as "mVEL" (pronounced as **/ɛmːvel/**).
 
@@ -41,6 +41,7 @@ The characters `,` (comma), `'` (single quote), `~` (tilde), `&` (ampersand), `|
     - [6.1.0 Aliases](#610-aliases)
     - [6.2.0 Macros](#620-macros)
     - [6.3.0 Back-References](#630-back-references)
+    - [6.4.0 Comments](#630-comments)
   - [7.0.0 Validation Logic](#700-validation-logic)
     - [7.1.0 Practical Validation Example](#710-practical-validation-example)
   - [8.0.0 Recommendations & Conventions](#800-recommendations--conventions)
@@ -193,7 +194,7 @@ The following sub-sections will outline the synopses of the Validation Rule and 
 
 ## 6.0.0 Validation Expression Supplemental Features
 
-There SHOULD be the possibility to provide ways to simplify the Validation Expression to increase its readability and to hook into the process. The RECOMMENDED features to implement are (1) the possibility to alias a rule, (2) the possibility create a macro for a set of rules, (3) the possibility to reference any available data in the current context.
+There SHOULD be the possibility to provide ways to simplify the Validation Expression to increase its readability and to hook into the process. The RECOMMENDED features to implement are (1) the possibility to alias a rule, (2) the possibility create a macro for a set of rules, (3) the possibility to reference any available data in the current context, (4) the possibility to add comments.
 
 ### 6.1.0 Aliases
 
@@ -210,6 +211,52 @@ In the context of validating complex structured-data. There SHOULD also be the p
 A back-reference is simply a way to access any currently available data in the current context resulting from the validation process. This can be anything from the key or the value of another field, the result of the entire validation of some field, or the result of a specific rule of some field. The RECOMMENDED syntax for back-references is `${path.to.some.value}` (similar to JavaScript interpolation notation). Note that the data resulting from the field that is currently being validated can not be accessed at this time, as the validation process is not yet complete, but its value can be retrieved using a special back-reference, that is the `${this}` back-reference, which references the value that is currently being validated. This is useful with rules that do not have anything to do with the input like conditionals (e.g. `if:${this},18,<=`) but sometimes the value may be needed to be compared against something.
 
 An example where back-references can be used is in forms where some field is only required if another field does not satisfy some condition. A practical example for this would be a form that can be submitted by anyone, but if the user is a minor, then a parental consent MUST be provided. Accordingly, the validation for such field can be something like `if.lt:${age.value},18|(required&accepted)` (if age is less than 18, the field is required and must be accepted otherwise it's optional).
+
+### 6.4.0 Comments
+
+There SHOULD be the ability to write comments within the Validation Expression to increase its readability and add explications to make it more maintainable. Comments MAY come in two forms, Inline and Multiline.
+
+Inline comments may be denoted by using either `#` (hash) or `//` (two slashes) like `# comment` and `// comment` respectively. Inline comments should always be the last token on any Validation Expression line, which means, inline comments make only sense in a multiline Validation Expression string.
+
+Multiline comments on the other hand can be anything enclosed between `/*` and `*/` (slash asterisk, asterisk slash) like `/* comment */`, these comments may appear in single- and multi-line Validation Expression strings.
+
+The engine must be able to differentiate between comments and similar tokens written between `""` (balanced double quotes), which are string arguments that should be passed as specified.
+
+Here are some examples:
+
+#### Multi-Line Validation Expression
+
+```php
+required & (
+    /**
+     * value can be an object or an array,
+     * each type must adhere to some guidelines
+     */
+    (
+        object &
+        // class should the expected properties
+        object.isInstanceOf: "\\Namespace\\Class" |
+        object.hasMethod: "getValue"
+    ) | (
+        array &
+        array.isAssociative &
+        array.hasKey: "key" & # required key
+        array.hasValue: "value" &
+        array.subset: {"other": null} # optional subset
+        // use ${this} to retrieve current value
+    ) &
+    min: 2
+)
+```
+
+#### Single-Line Validation Expression
+
+```php
+null^~empty/*nullable*/
+```
+
+Note that this feature is expected to be supported in implementations of mVEL that implement `>= v1.1.0` of the spec.
+
 
 ---
 
