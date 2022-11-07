@@ -41,7 +41,7 @@ The characters `,` (comma), `'` (single quote), `~` (tilde), `&` (ampersand), `|
     - [6.1.0 Aliases](#610-aliases)
     - [6.2.0 Macros](#620-macros)
     - [6.3.0 Back-References](#630-back-references)
-    - [6.4.0 Comments](#630-comments)
+    - [6.4.0 Comments](#640-comments)
   - [7.0.0 Validation Logic](#700-validation-logic)
     - [7.1.0 Practical Validation Example](#710-practical-validation-example)
   - [8.0.0 Recommendations & Conventions](#800-recommendations--conventions)
@@ -234,7 +234,7 @@ required & (
      */
     (
         object &
-        // class should the expected properties
+        // class should already have the expected properties
         object.isInstanceOf: "\\Namespace\\Class" |
         object.hasMethod: "getValue"
     ) | (
@@ -255,7 +255,7 @@ required & (
 null^~empty/*nullable*/
 ```
 
-Note that this feature is expected to be supported in implementations of mVEL that implement `>= v1.1.0` of the spec.
+Note that this feature is expected to be supported in implementations of mVEL that implement `>= v1.1.0` of the Specification.
 
 
 ---
