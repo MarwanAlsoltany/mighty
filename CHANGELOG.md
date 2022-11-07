@@ -4,7 +4,20 @@ All notable changes to **Mighty** will be documented in this file.
 
 <br />
 
-## [[1.0.1] - 2022-10-04](https://github.com/MarwanAlsoltany/mighty/compare/v1.0.1...v1.1.0)
+## [[1.1.1] - 2022-11-07](https://github.com/MarwanAlsoltany/mighty/compare/v1.1.0...v1.1.1)
+- Update rules:
+    - Fix `data` rules:
+        - Refactor `json` rule to use `JSON_THROW_ON_ERROR`.
+        - Update `xml` rule to clear libxml errors before checking.
+- Update `Engine` class:
+    - Fix `evaluateBitwiseExpression()` method checks for expression validity.
+    - Update `parseExpression()` method to allow for same rule repetition.
+    - Add `cleanExpression()` method.
+    - Add `evaluateExpression()` method.
+
+<br />
+
+## [[1.1.0] - 2022-10-04](https://github.com/MarwanAlsoltany/mighty/compare/v1.0.1...v1.1.0)
 - Update rules:
     - Fix `common`, `condition`, and `image` rules messages placeholders.
 - Update `Expression` class:
@@ -15,7 +28,7 @@ All notable changes to **Mighty** will be documented in this file.
     - Update `variable()` method.
 - Update `Engine` class:
     - Fix `evaluateBitwiseExpression()` method checks for expression validity.
-    - Update `parseExpression()` method to allow for same rule repeation.
+    - Update `parseExpression()` method to allow for same rule repetition.
     - Add `cleanExpression()` method.
     - Add `evaluateExpression()` method.
 - Update `Utility` class:
