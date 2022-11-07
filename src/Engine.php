@@ -195,9 +195,9 @@ class Engine
 
         $patterns = [
             // search => replacement
-            '/(?:"[^""]*"(*SKIP)(*FAIL)|(?:(?:#|\/\/)[^\r\n]*))/m' => '', // inline comments
-            '/(?:"[^""]*"(*SKIP)(*FAIL)|(?:\/(?:\*.*?\*\/)))/s'    => '', // multiline comments
-            '/(?:"[^""]*"(*SKIP)(*FAIL)|(?:\s+))/'                 => '', // whitespace
+            '/(?:"[^"]*"(*SKIP)(*FAIL)|(?:(?:#|\/\/)[^\r\n]*))/m' => '', // inline comments
+            '/(?:"[^"]*"(*SKIP)(*FAIL)|(?:\/\*.*?\*\/))/s'        => '', // multiline comments
+            '/(?:"[^"]*"(*SKIP)(*FAIL)|(?:\s+))/'                 => '', // whitespace
         ];
 
         $result = preg_replace(
@@ -230,31 +230,32 @@ class Engine
 
         // replace JSON-like strings with temporary placeholders to prevent conflicts
         // with rule arguments escaping quotes and splitting characters, this is done because
-        // JSON can be very complex and mess with the splitting of rules done down below
-        $jsonRegex  = '/((?:[\[\{])(?:.*?)(?:[\}\]]))/S';
-        $jsonLikes  = [];
-        $expression = preg_replace_callback($jsonRegex, function ($matches) use (&$jsonLikes) {
-            $value = $matches[1];
-            $key   = sprintf('{%s}', md5($value));
+        // JSON can be very complex and mess with the splitting of rules done later
+        $placeholders = [];
+        $expression   = preg_replace_callback(
+            '/((?:[\[\{])(?:.*?)(?:[\}\]]))/S',
+            function ($matches) use (&$placeholders) {
+                $value = $matches[1];
+                $hash  = md5($value);
+                $key   = "%{$hash}%";
 
-            $jsonLikes[$key] = $value;
+                $placeholders[$key] = $value;
 
-            return $key;
-        }, $expression);
+                return $key;
+            },
+            $expression
+        );
 
         // split the validation string by the following characters list:
         // "~ & | ^ ( )" (bitwise operators and precedence parentheses)
         // which are not inside balanced single quotes (escaped)
         $rulesRegex  = "/[\~\&\|\^\(\)](?=([^']*['][^']*['])*[^']*$)/u";
         $rulesString = $expression;
-        $rulesArray  = preg_split($rulesRegex, $rulesString) ?: []; // spit rules
-        $rulesArray  = array_map('trim', $rulesArray); // trim rules
-        $rulesArray  = array_filter($rulesArray); // remove empty rules
-        $rulesArray  = array_values($rulesArray); // reindex rules
+        $rulesArray  = preg_split($rulesRegex, $rulesString, -1, PREG_SPLIT_NO_EMPTY) ?: [];
         $result      = array_map(fn ($rule) => [
             // extract name and statement and inject placeholders back
-            'name'      => strstr($rule, ':', true) ?: $rule,
-            'statement' => strtr($rule, $jsonLikes),
+            'name'      => trim(strstr($rule, ':', true) ?: $rule),
+            'statement' => trim(strtr($rule, $placeholders)),
         ], $rulesArray);
 
         Memoizer::pool(__METHOD__)->set($cacheKey, $result);
