@@ -36,14 +36,15 @@ class Shape extends Constraint implements ValidatesMany
      * @param array<string,Constraint> $fields The fields to validate.
      *      Nested elements can be accessed using dot notation (`someKey.someNestedKey`).
      *      Keys can have the wildcard `*` after a dot to match all nested keys.
-     * @param bool $recursive [optional] Whether to or not to make the data recursively validatable.
+     * @param bool $traverse [optional] Whether to traverse the validatable data.
      *      The data this constraint is applied to will be casted to an array recursively to allow for accessing nested data.
+     *      Nested objects properties (and arrays keys) can be accessed using dot notation using the `$fields` parameter.
      * @param array|null $messages
      * @param Strategy $strategy
      */
     public function __construct(
         private array $fields,
-        private bool $recursive = false,
+        private bool $traverse = false,
         ?array $messages = null,
         Strategy $strategy = Strategy::FailFast,
     ) {
@@ -81,7 +82,7 @@ class Shape extends Constraint implements ValidatesMany
 
     public function validate(mixed $value = null): array
     {
-        $data        = $this->recursive ? Utility::castToArray($value) : (array)$value;
+        $data        = $this->traverse ? Utility::castToArray($value) : (array)$value;
         $validations = [];
         $messages    = ['*' => $this->messages];
         $labels      = [];
