@@ -23,7 +23,7 @@ use MAKS\Mighty\Validation\Constraint\ValidatesOne;
 use MAKS\Mighty\Support\Utility;
 
 /**
- * Combines a set of constraints to build up a Validation Expression.
+ * Validates any data by compining a set of constraints to build up a Validation Expression.
  *
  * @package Mighty\Validator
  */
@@ -38,12 +38,12 @@ class Compound extends Constraint implements ValidatesOne
     /**
      * Compound constructor.
      *
-     * @param array<Constraint|Rule|Compound> $constraints The constraints to be applied.
+     * @param array<Constraint|Rule|Compound> $constraints The constraints to combine.
      *      Note that the supplied constraints must be an actual instance of the `Constraint::class`, or an instance `Rule::class` or `Compound::class`
      *      (only the `Compound` and `Rule` of the Special Constraint Attributes group is allowed).
-     * @param Operator $operator
-     * @param Behavior $behavior
-     * @param Strategy $strategy
+     * @param Operator $operator The operator to combine with.
+     * @param Behavior $behavior The behavior of the genrated validation expression.
+     * @param Strategy $strategy The fail strategy of the constraint.
      */
     public function __construct(
         array $constraints,
@@ -80,7 +80,7 @@ class Compound extends Constraint implements ValidatesOne
             ])
             ->check();
 
-        [$validation, $messages] = $this->groupConstraints($constraints, $operator, $behavior);
+        [$validation, $messages] = $this->combineConstraints($constraints, $operator, $behavior);
 
         parent::__construct(validation: $validation, messages: $messages, strategy: $strategy);
     }
@@ -93,7 +93,7 @@ class Compound extends Constraint implements ValidatesOne
      *
      * @return array{Validation,array<string,string|null>}
      */
-    private function groupConstraints(array $constraints, Operator $operator, Behavior $behavior): array
+    private function combineConstraints(array $constraints, Operator $operator, Behavior $behavior): array
     {
         $validation = new Validation();
         $messages   = [];
