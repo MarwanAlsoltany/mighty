@@ -46,10 +46,13 @@ return [
                 return false;
             }
 
-            json_decode($input, true);
-            $isValid = json_last_error() === JSON_ERROR_NONE;
+            try {
+                json_decode($input, false, 512, JSON_THROW_ON_ERROR);
+            } catch (\JsonException $e) {
+                return false;
+            }
 
-            return $isValid;
+            return true;
         })
         ->message('${@label} must be a valid JSON.')
         ->example('json')
@@ -78,6 +81,7 @@ return [
                 return false;
             }
 
+            libxml_clear_errors();
             $xmlErrs = libxml_use_internal_errors(true);
             $element = simplexml_load_string(trim($input));
             libxml_use_internal_errors($xmlErrs);
