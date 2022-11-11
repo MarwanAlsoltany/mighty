@@ -16,6 +16,7 @@ use MAKS\Mighty\Engine;
 use MAKS\Mighty\Result;
 use MAKS\Mighty\Validation\Strategy;
 use MAKS\Mighty\Validation\Constraint;
+use MAKS\Mighty\Validation\Constraint\ValidatesOne;
 
 /**
  * Validates any data using a single validation rule.
