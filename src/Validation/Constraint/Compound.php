@@ -51,7 +51,7 @@ class Compound extends Constraint implements ValidatesOne
         Behavior $behavior = Behavior::Normal,
         Strategy $strategy = Strategy::FailLazy,
     ) {
-        ($validator = clone $this->getValidator())
+        ($validator = clone $this->getMasterValidator())
             ->setData([
                 'constraints' => $constraints,
             ])
@@ -80,9 +80,10 @@ class Compound extends Constraint implements ValidatesOne
             ])
             ->check();
 
+        parent::__construct(validation: '', messages: null, strategy: $strategy);
         [$validation, $messages] = $this->combineConstraints($constraints, $operator, $behavior);
-
-        parent::__construct(validation: $validation, messages: $messages, strategy: $strategy);
+        $this->setValidation((string)$validation);
+        $this->setMessages($messages);
     }
 
 
