@@ -48,7 +48,7 @@ class Shape extends Constraint implements ValidatesMany
         ?array $messages = null,
         Strategy $strategy = Strategy::FailFast,
     ) {
-        ($validator = clone $this->getValidator())
+        ($validator = clone $this->getMasterValidator())
             ->setData([
                 'fields' => $fields,
             ])
@@ -93,7 +93,8 @@ class Shape extends Constraint implements ValidatesMany
             $labels[$field]      = null;
         }
 
-        $result = (clone $this->getValidator())
+        $result = $this
+            ->getValidator()
             ->setData($data)
             ->setValidations($validations)
             ->setMessages($messages)
