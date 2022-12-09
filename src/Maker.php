@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace MAKS\Mighty\Validation;
+namespace MAKS\Mighty;
 
 use ReflectionClass;
 use MAKS\Mighty\Validator;
