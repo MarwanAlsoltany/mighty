@@ -55,7 +55,8 @@ class Valid extends Constraint implements ValidatesOne
         $messages    = [$name => [$this->validation => $this->messages[$this->validation] ?? null]];
         $labels      = [$name => static::class];
 
-        $result = (clone $this->getValidator())
+        $result = $this
+            ->getValidator()
             ->addRule(
                 (new Rule())
                     ->setName('valid')
