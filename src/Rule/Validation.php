@@ -15,7 +15,7 @@ namespace MAKS\Mighty\Rule;
  * Validation rule names and aliases constants.
  *
  * This is an auto-generated class that was generated programmatically by:
- * `MAKS\Mighty\Validation\Maker`
+ * `MAKS\Mighty\Maker`
  *
  * @package Mighty\Validator
  */
