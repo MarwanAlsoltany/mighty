@@ -38,6 +38,15 @@ use MAKS\Mighty\Support\Utility;
 class Constraint implements ValidatesAny
 {
     /**
+     * Constraint validator instance.
+     *
+     * @var Validator
+     *
+     * @since 1.2.0
+     */
+    protected Validator $validator;
+
+    /**
      * Constraint validation expression.
      *
      * @var string
@@ -71,11 +80,63 @@ class Constraint implements ValidatesAny
         ?array $messages = null,
         Strategy $strategy = Strategy::FailFast,
     ) {
+        $this->setValidator(clone static::getMasterValidator());
         $this->setValidation((string)$validation);
         $this->setMessages((array)$messages);
         $this->setStrategy($strategy);
     }
 
+
+    /**
+     * Returns the master Validator instance that should be used in validation.
+     *
+     * NOTE: All constraint share the same Validator. Always clone it to avoid any side effects.
+     *
+     * FACT: The idea of master Validator is used to allow for better memory management
+     *      and faster load times as the default Validator loads 200+ rules by default.
+     *      Cloning will make a shallow copy resulting in reusing the same rules loaded by the master Validator.
+     *
+     * @since 1.2.0 This method used to be called `getValidator()` before `v1.2.0`.
+     *
+     * @return Validator
+     */
+    final protected static function getMasterValidator(): Validator
+    {
+        static $validator = new Validator();
+
+        return $validator;
+    }
+
+    /**
+     * Gets constraint validator instance.
+     *
+     * This method returns a clone of the master Validator
+     * if a Validator is not set explicitly via `self::setValidator()`.
+     *
+     * @return Validator
+     *
+     * @since 1.2.0
+     */
+    public function getValidator(): Validator
+    {
+        return $this->validator;
+    }
+
+    /**
+     * Sets constraint validator instance.
+     *
+     * @param Validator $validator Constraint validator instance.
+     *
+     * @return static
+     *
+     * @since 1.2.0
+     */
+    public function setValidator(Validator $validator): static
+    {
+        $this->validator = $validator;
+
+        return $this;
+    }
 
     /**
      * Gets constraint validation expression.
@@ -160,7 +221,7 @@ class Constraint implements ValidatesAny
         $messages    = [$name => $this->messages];
         $labels      = [$name => 'Value'];
 
-        $result = (clone $this->getValidator())
+        $result = $this->validator
             ->setData($data)
             ->setValidations($validations)
             ->setMessages($messages)
@@ -209,20 +270,5 @@ class Constraint implements ValidatesAny
         }
 
         return true;
-    }
-
-    /**
-     * Returns the master Validator instance that should be used in validation.
-     *
-     * NOTE: All constraint share the same Validator.
-     *      Always clone it to avoid any side effects.
-     *
-     * @return Validator
-     */
-    final protected function getValidator(): Validator
-    {
-        static $validator = new Validator();
-
-        return $validator;
     }
 }
