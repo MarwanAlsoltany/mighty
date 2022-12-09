@@ -906,7 +906,7 @@ class LogicTest extends TestCase
         $this->assertFalse(Validator::validateData(null, Validation::numberIsNan())->getResult());
     }
 
-    public function test8ValidationRule(): void
+    public function testStringCharsetValidationRule(): void
     {
         $this->assertFalse(Validator::validateData(null, Validation::stringCharset('ASCII'))->getResult());
         $this->assertFalse(Validator::validateData('', Validation::stringCharset('UNKNOWN'))->getResult());
@@ -947,7 +947,7 @@ class LogicTest extends TestCase
         $this->assertFalse(Validator::validateData(null, Validation::stringLength(1))->getResult());
     }
 
-    public function test1ValidationRule(): void
+    public function testStringWordsValidationRule(): void
     {
         $this->assertTrue(Validator::validateData('Test Text', Validation::stringWordsCount(2))->getResult());
         $this->assertFalse(Validator::validateData('Foo Bar Baz', Validation::stringWordsCount(1))->getResult());
@@ -971,7 +971,7 @@ class LogicTest extends TestCase
         $this->assertFalse(Validator::validateData(null, Validation::arrayHasValue('xxx'))->getResult());
     }
 
-    public function testXxxValidationRule(): void
+    public function testArrayHasDistinctValidationRule(): void
     {
         $this->assertTrue(Validator::validateData([['id' => 1], ['id' => 2]], Validation::arrayHasDistinct('id'))->getResult());
         $this->assertFalse(Validator::validateData([['id' => 1], ['id' => 1]], Validation::arrayHasDistinct('id'))->getResult());
