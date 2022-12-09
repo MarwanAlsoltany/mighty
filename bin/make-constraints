@@ -6,7 +6,7 @@ require __DIR__ . '/../vendor/autoload.php';
 echo PHP_EOL, PHP_EOL;
 
 try {
-    $files = MAKS\Mighty\Validation\Maker::makeConstraints();
+    $files = MAKS\Mighty\Maker::makeConstraints();
 
     $lengths = array_map(fn ($file) => strlen(basename($file)), $files);
     $width   = max($lengths);
