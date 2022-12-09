@@ -19,7 +19,7 @@ use MAKS\Mighty\Validation\Constraint\Rule;
  * Adds `accepted` rule. Asserts that the input is accepted (equals: "on", "yes", "yeah", "yep", "yo", "ok", "okay", "aye", 1 or "1", true or "true") note that strings are treated in a case-insensitive manner.
  *
  * This is an auto-generated class that was generated programmatically by:
- * `MAKS\Mighty\Validation\Maker`
+ * `MAKS\Mighty\Maker`
  *
  * @package Mighty\Validator
  *

@@ -19,7 +19,7 @@ use MAKS\Mighty\Validation\Constraint\Rule;
  * Adds `password` rule. Asserts that the input is a valid password (minimum 8 characters, consists of at least one small letter and one capital letter, at least one number, at least one special character, and optionally a space).
  *
  * This is an auto-generated class that was generated programmatically by:
- * `MAKS\Mighty\Validation\Maker`
+ * `MAKS\Mighty\Maker`
  *
  * @package Mighty\Validator
  *

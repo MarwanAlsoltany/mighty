@@ -19,7 +19,7 @@ use MAKS\Mighty\Validation\Constraint\Rule;
  * Adds `space` rule. Asserts that the input consists of whitespace characters only.
  *
  * This is an auto-generated class that was generated programmatically by:
- * `MAKS\Mighty\Validation\Maker`
+ * `MAKS\Mighty\Maker`
  *
  * @package Mighty\Validator
  *

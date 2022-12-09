@@ -19,7 +19,7 @@ use MAKS\Mighty\Validation\Constraint\Rule;
  * Adds `assert.greaterThan` rule. An alias for the `if.gt` rule.
  *
  * This is an auto-generated class that was generated programmatically by:
- * `MAKS\Mighty\Validation\Maker`
+ * `MAKS\Mighty\Maker`
  *
  * @package Mighty\Validator
  *

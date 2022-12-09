@@ -19,7 +19,7 @@ use MAKS\Mighty\Validation\Constraint\Rule;
  * Adds `min` rule. Asserts that the input count is greater than or equal to the given value. Works with all data types (null: 0; boolean: 0 or 1; float/integer: number value; string: characters count; array/countable: elements count; object: accessible properties count).
  *
  * This is an auto-generated class that was generated programmatically by:
- * `MAKS\Mighty\Validation\Maker`
+ * `MAKS\Mighty\Maker`
  *
  * @package Mighty\Validator
  *

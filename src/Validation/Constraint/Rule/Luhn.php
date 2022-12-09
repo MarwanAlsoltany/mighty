@@ -19,7 +19,7 @@ use MAKS\Mighty\Validation\Constraint\Rule;
  * Adds `luhn` rule. Asserts that the input passes the Luhn Algorithm check. This rule is mostly used in conjunction with other rules like credit card numbers and identifiers to further check the validity of the subject.
  *
  * This is an auto-generated class that was generated programmatically by:
- * `MAKS\Mighty\Validation\Maker`
+ * `MAKS\Mighty\Maker`
  *
  * @package Mighty\Validator
  *

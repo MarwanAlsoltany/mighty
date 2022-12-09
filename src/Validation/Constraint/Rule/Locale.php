@@ -19,7 +19,7 @@ use MAKS\Mighty\Validation\Constraint\Rule;
  * Adds `locale` rule. Asserts that the input is a valid locale identifier (default: [ISO 639-1] or [ISO 639-1]_[ISO 3166-1 alpha-2], case-insensitive, input is canonicalized before checking (dashes to underscores, no dots or charset); strict: [ISO 639-1] or [ISO 639-1]_[ISO 3166-1 alpha-2], case-sensitive without canonicalization.
  *
  * This is an auto-generated class that was generated programmatically by:
- * `MAKS\Mighty\Validation\Maker`
+ * `MAKS\Mighty\Maker`
  *
  * @package Mighty\Validator
  *

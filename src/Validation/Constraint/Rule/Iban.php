@@ -19,7 +19,7 @@ use MAKS\Mighty\Validation\Constraint\Rule;
  * Adds `iban` rule. Asserts that the input is a valid IBAN (International Bank Account Number). The "ISO 3166-1 alpha-2" country code can be specifed to narrow the pattern.
  *
  * This is an auto-generated class that was generated programmatically by:
- * `MAKS\Mighty\Validation\Maker`
+ * `MAKS\Mighty\Maker`
  *
  * @package Mighty\Validator
  *
