@@ -6,7 +6,7 @@ require __DIR__ . '/../vendor/autoload.php';
 echo PHP_EOL, PHP_EOL;
 
 try {
-    $markdown = MAKS\Mighty\Validation\Maker::makeRulesMarkdownTable();
+    $markdown = MAKS\Mighty\Maker::makeRulesMarkdownTable();
 
     printf("# Rules: \n\n%s", $markdown);
 } catch (Throwable $error) {
