@@ -572,7 +572,7 @@ $results = $validator->validateAll(
 ];
 ```
 
-![■](https://user-images.githubusercontent.com/7969982/182090863-c6bf7159-7056-4a00-bc97-10a5d296c797.png) **Hint:** *Check out the default [`rules`](./src/Validator/Validation/Logic/rules.php), [`aliases`](./src/Validator/Validation/Logic/aliases.php), and [`macros`](./src/Validator/Validation/Logic/macros.php) of the [`Validator`](./src/Validator.php) to see more examples.*
+![■](https://user-images.githubusercontent.com/7969982/182090863-c6bf7159-7056-4a00-bc97-10a5d296c797.png) **Hint:** *Check out the default [`rules`](./src/Validation/Logic/rules), [`aliases`](./src/Validation/Logic/aliases.php), and [`macros`](./src/Validation/Logic/macros.php) of the [`Validator`](./src/Validator.php) to see more examples.*
 
 
 ---
@@ -606,14 +606,88 @@ This group contains attributes that do a specific job that is available only in 
 - [`Shape`](./src/Validation/Constraint/Shape.php): This attribute is used to validate the shape of an array or object. Note that this is the only attribute that validates a set of values (structured data) rather than a single value.
 - [`Compound`](./src/Validation/Constraint/Compound.php): This attribute is used to combine a set of constraints to build up a Validation Expression. The constraints can be combined using any operator, and can also have a behavior. It serves as an object-oriented way to build up a Validation Expression.
 
-![■](https://user-images.githubusercontent.com/7969982/182090864-09a2573a-59e3-4c82-bf9f-e2b9cd360c27.png) **Note:** *Note that the constraints that are allowed to be used with the `Shape::class` and `Compound::class` attributes must be an actual instances of the `Constraint::class`, `Rule::class`, or `Compound::class`. The `Callback::class`, `Valid::class`, or `Shape::class` of the **Special Constraint Attributes Group** are NOT allowed.*
-
+![■](https://user-images.githubusercontent.com/7969982/182090864-09a2573a-59e3-4c82-bf9f-e2b9cd360c27.png) **Note:** *Note that the constraints that are allowed to be used with the `Shape::class` and `Compound::class` attributes must be an actual instances of the `Constraint::class`, `Rule::class`, or `Compound::class`. The `Callback::class`, `Valid::class`, or `Shape::class` of the **Special Constraint Attributes Group** are NOT allowed. If you have a need for this feature, open an issue and we'll discuss implementing it*
 
 ### Rule Constraint Attributes Group
 
 The Rule Constraint Attributes are located under the [`MAKS\Mighty\Validation\Constraint\Rule`](./src/Validation/Constraint/Rule) namespace.
 
 This group contains attributes that are based on a single validation rule. It consists of most of the attributes Mighty provides. Refer to the [Validations](#validations) section for the full list.
+
+### Adding a Custom Constraint
+
+Mighty has a huge list of built-in constraints, it's really rare that you will need anything other than what Mighty provides.
+Nonetheless, sometimes the need arises for a custom constraint, the is how you can achieve that:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Validation\Constraint;
+
+use Attribute;
+use MAKS\Mighty\Rule;
+use MAKS\Mighty\Result;
+use MAKS\Mighty\Validation\Strategy;
+use MAKS\Mighty\Validation\Constraint;
+use MAKS\Mighty\Validation\Constraint\ValidatesOne;
+// use the ValidatesMany interface if your Constraint returns a collection of Result objects
+use MAKS\Mighty\Validation\Constraint\ValidatesMany;
+
+#[Attribute(
+    Attribute::TARGET_PROPERTY |
+    Attribute::TARGET_METHOD
+)]
+class MyCustomConstraint extends Constraint implements ValidatesOne
+{
+    public function __construct(
+        ?string $message = null,
+        Strategy $strategy = Strategy::FailFast,
+    ) {
+        parent::__construct(
+            validation: 'app.myCustomConstraint',
+            messages: ['app.myCustomConstraint' => $message],
+            strategy: $strategy
+        );
+    }
+
+
+    public function validate(mixed $value = null): Result
+    {
+        // it is really up to you, how you handle this
+        // you will just work with a normal Mighty Validator
+        // here we're just preparing the data to pass to the Validator
+        $name        = '';
+        $data        = [$name => $value];
+        $validations = [$name => $this->validation];
+        $messages    = [$name => [$this->validation => $this->messages[$this->validation] ?? null]];
+        $labels      = [$name => static::class];
+
+        // you can reuse the built-in rules or
+        // add you own Rule that handles your custom logic
+        $result = $this
+            ->getValidator()
+            ->addRule(
+                // see MAKS\Mighty\Rule for more info
+                (new Rule())
+                    ->setName('app.myCustomConstraint')
+                    ->setCallback(static fn ($input) => $input /* here comes your logic */)
+                    ->setParameters(['@input']) // rule callback dependencies
+                    ->setMessage('${@label} must follow my custom constraint validation.') // this is the default message
+            )
+            ->setData($data)
+            ->setValidations($validations)
+            ->setMessages($messages)
+            ->setLabels($labels)
+            ->validate();
+
+        return $result[$name]; // if you implement ValidatesMany, you will just return $result
+    }
+}
+```
+
+![■](https://user-images.githubusercontent.com/7969982/182090864-09a2573a-59e3-4c82-bf9f-e2b9cd360c27.png) **Note:** *Custom constraints are considered a part of the **Special Constraint Attributes Group** (i.e. not allowed to be used with/inside the `Shape::class` and `Compound::class` constraints)*
 
 
 ---
