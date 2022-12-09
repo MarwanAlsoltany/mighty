@@ -44,7 +44,7 @@ class Callback extends Constraint implements ValidatesOne
         ?string $message = null,
         Strategy $strategy = Strategy::FailLazy,
     ) {
-        ($validator = clone $this->getValidator())
+        ($validator = clone $this->getMasterValidator())
             ->setData([
                 'callback' => $callback,
             ])
@@ -80,7 +80,8 @@ class Callback extends Constraint implements ValidatesOne
         $callback = $this->callback;
         $callback = $callback(...);
 
-        $result = (clone $this->getValidator())
+        $result = $this
+            ->getValidator()
             ->addRule(
                 (new Rule())
                     ->setName('callback')
