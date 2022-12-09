@@ -23,11 +23,20 @@ return [
                 return false;
             }
 
-            $groups     = array_map(fn ($encoding) => [$encoding, ...mb_encoding_aliases($encoding)], mb_list_encodings());
-            $encodings  = array_merge(...((array)$groups));
+            // Starting from PHP 8.2 using Base64, HTML-Entities, HTML-Entities, Quoted-Printable encodings with mb_* functions
+            // is deprecated (see https://php.watch/versions/8.2/mbstring-qprint-base64-uuencode-html-entities-deprecated),
+            // the mb_list_encodings() will return all availabe encodings including the deprecated ones but
+            // mb_encoding_aliases($encoding) will trigger a deprecation when these encodings are passed to it.
+            // We need to clean the result of mb_list_encodings() from these encodings to before passing them to any mb_* function.
+            // Apparently, mb_list_encodings() returns these deprecated encodings as the first elements in the list
+            // we cloud simply array_slice(mb_list_encodings(), 3), but this is not relayable, as the order may change without a notice.
+            $encodings  = mb_list_encodings();
+            $encodings  = array_udiff($encodings, ['Base64', 'HTML-Entities', 'Uuencode', 'Quoted-Printable'], strcasecmp(...));
+            $encodings  = array_map(fn ($encoding) => [$encoding, ...mb_encoding_aliases($encoding)], $encodings);
+            $encodings  = array_merge(...((array)$encodings));
             $encodings  = array_unique($encodings);
-            $available  = array_map('strtoupper', $encodings);
-            $charsets   = array_map('strtoupper', $charsets);
+            $available  = array_map(strtoupper(...), $encodings);
+            $charsets   = array_map(strtoupper(...), $charsets);
             $difference = array_diff($charsets, $available);
 
             if (empty($charsets) === true || empty($difference) === false) {
