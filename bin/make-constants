@@ -6,7 +6,7 @@ require __DIR__ . '/../vendor/autoload.php';
 echo PHP_EOL, PHP_EOL;
 
 try {
-    $path = MAKS\Mighty\Validation\Maker::makeConstants();
+    $path = MAKS\Mighty\Maker::makeConstants();
 
     printf("Generated rule names and aliases constants in file: '%s'\n", $path);
 } catch (Throwable $error) {
