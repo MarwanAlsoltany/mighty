@@ -1,0 +1,2396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>MAKS\Mighty\Rule | Mighty API Docs</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://MarwanAlsoltany.github.io/mighty/opensearch.xml"
+          title="Mighty API Docs (master)" />
+    </head>
+
+    <body id="class" data-name="class:MAKS_Mighty_Rule" data-root-path="../../" data-search-index-url="../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Mighty API Docs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../MAKS.html">MAKS</a></li><li class="backslash">\</li><li><a href="../../MAKS/Mighty.html">Mighty</a></li><li class="backslash">\</li><li>Rule</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Rule    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Rule</strong>        extends <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>        implements        <a target="_blank" rel="noopener" href="https://www.php.net/Stringable">Stringable</a>        (<a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                            protected                                                            DEFAULT
+                                    </td>
+                <td class="last">
+                    <p><em><p>Rule definition array defaults.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SCHEMA
+                                    </td>
+                <td class="last">
+                    <p><em><p>Rule definition schema/structure.</p></em></p>
+                    <p><p>NOTE: All words prefixed with the <code>@</code> symbol are variables specific to the rule definition.</p>
+<ul>
+<li>
+<p><code>@rule</code>: (object) [magic] The rule object.
+This value is a magic value and is not required inside rule definition array.
+It is used to retrieve the rule object. Useful for getting/setting some data of
+the rule object like the statement or any other attribute inside the callback if needed.</p>
+</li>
+<li>
+<p><code>@name</code>: (string) [required] Rule name.
+This value can be any string consisting of alphanumeric characters, dots, dashes, underscores
+(matches: <code>/^[A-Za-z0-9_\-\.]+$/</code>), and between 2 and 255 characters.</p>
+</li>
+<li>
+<p><code>@arguments</code>: (array|null) [optional] Rule arguments.
+If empty, this means that the rule accepts no arguments. Otherwise, it denotes the data types of the arguments.
+This value serves two roles, at parsing time it will be used to set arguments data types,
+later on it will be filled with the actual values in their expected data types.
+Valid data types casts are: <code>null</code>, <code>boolean</code> or <code>bool</code>, <code>integer</code> or <code>int</code>, <code>float</code> or <code>double</code>,
+<code>string</code>, <code>array</code>, and <code>object</code>. All data types must be stringified using JSON Spec rules and when supplied,
+some extra care needs to be taken (especially with <code>array</code> and <code>object</code>), the JSON needs to be escaped by
+wrapping it as a whole with<code>'</code> (single quotes) and escaping any single quotes inside the JSON
+with <code>\</code> (backslash) —using <code>addcslashes($json, "'")</code>— to avoid CSV collisions when parsing.
+Arguments can also be variadic by prefixing them with <code>...</code> (i.e <code>'...string'</code>).
+Note that only the last argument can be variadic, if an argument is variadic and is not the last,
+all extra arguments will be packed into the resulting array starting from the variadic position.</p>
+</li>
+<li>
+<p><code>@callback</code>: (callable|null) [optional] Rule callback function.
+This is where the logic of the rule lives.
+The callback should validate, sanitize, or check the input and return some value.
+If empty, the input value will be simply returned as is (fallback: <code>fn ($input) =&gt; $input</code>).</p>
+</li>
+<li>
+<p><code>@parameters</code>: (array|null) [optional] Rule callback parameters.
+Normally this should look something like <code>['@input']</code> (fallback: <code>['@input']</code>).
+More parameters can be added depending on callback function requirements.
+The position of the <code>@input</code> depends on the callback function (can be first or any other position).
+Note that the <code>@input</code> will be injected when the rule is executed.
+This value has access to the <code>@rule</code>, <code>@name</code>, <code>@input</code>, and <code>@arguments</code> injectables.
+Nested data can be accessed using dot notation <code>@injectable.someKey</code> or <code>@injectable.0</code> (with numeric arrays).
+Fallbacks can also be specified using the syntax <code>@injectable.someKey:fallback</code> (fallbacks must be scalar).</p>
+</li>
+<li>
+<p><code>@input</code>: (mixed) [magic] Rule input.
+This value is a magic value and is not required inside rule definition array.
+It references the input value that was provided to the rule when executed.</p>
+</li>
+<li>
+<p><code>@output</code>: (mixed) [magic] Rule callback output.
+This value is a magic value and is not required inside rule definition array.
+It references the output resulting from executing rule callback on rule input (fallback: <code>@input</code>, see <code>@callback</code>).</p>
+</li>
+<li>
+<p><code>@comparison</code>: (array|null) [optional] Rule comparison.
+This is used to compare the rule's callback result against any currently available data.
+Normally this should look something like <code>['@output', '!==', false]</code>
+(fallback: <code>['@output', '&amp;&amp;', true]</code>, returns truthiness of the result).
+This value has access to the <code>@rule</code>, <code>@name</code>, <code>@input</code>, <code>@arguments</code>, <code>@callback</code>, <code>@parameters</code>, and <code>@output</code> injectables.
+Nested data can be accessed using dot notation <code>@injectable.someKey</code> or <code>@injectable.0</code> (with numeric arrays).
+Fallbacks can also be specified using the syntax <code>@injectable.someKey:fallback</code> (fallbacks must be scalar).
+All PHP logical and bitwise operators are available with the same syntax (but of course as strings), namely:
+(L) Logical: <code>!</code> or <code>not</code>; <code>==</code> or <code>eq</code>; <code>!=</code> or <code>&lt;&gt;</code> or <code>neq</code>; <code>===</code> or <code>id</code>; <code>!==</code> or <code>nid</code>;
+<code>&lt;</code> or <code>lt</code>; <code>&lt;=</code> or <code>lte</code>; <code>&gt;</code> or <code>gt</code>; <code>&gt;=</code> or <code>gte</code>; <code>&amp;&amp;</code> or <code>and</code>; <code>||</code> or <code>or</code>; <code>xor</code>.
+(B) Bitwise: <code>~</code>; <code>&amp;</code>; <code>|</code>; <code>^</code>; <code>&lt;&lt;</code>; <code>&gt;&gt;</code>. If an invalid operator is specified, <code>&amp;&amp;</code> will be used instead.</p>
+</li>
+<li>
+<p><code>@message</code>: (string|null) [optional] Rule message.
+This value is optional and is used during validation to provide feedback to the user in case of failure.
+This value has access to the <code>@input</code>, <code>@output</code>, <code>@arguments</code>, <code>@parameters</code>, <code>@label</code> and <code>@extra</code> injectables.
+Nested data can be accessed using dot notation <code>@injectable.someKey</code> or <code>@injectable.0</code> (with numeric arrays).
+Fallbacks can also be specified using the syntax <code>@injectable.0:fallback</code> (fallbacks must be scalar).
+Note that injectables in messages have to be wrapped with <code>}</code> (i.e. <code>${@injectable:fallback}</code>) as placeholder.</p>
+</li>
+<li>
+<p><code>@variables</code>: (array|null) [magic|optional] Rule variables.
+This value is a magic/optional and is not required inside rule definition array.
+It is an associative array that holds injectables that can be used to inject some variables into <code>@message</code> placeholders.
+It contains the variables <code>@input</code>, <code>@output</code>, <code>@arguments</code>, <code>@parameters</code>, <code>@label</code>, and <code>@extra</code> after executing the rule.
+The <code>@label</code> injectable, is a special injectable that should be overwritten by the validator that executed the rule,
+it serves as a label for the message to provide more friendly and specific error messages (fallback: <code>The field</code>).
+The <code>@variables</code> may also sometimes contain the <code>@extra</code> variable, this injectable is also a special injectable that contains
+some extra variables that the <code>@callback</code> may want to make available to the <code>@message</code> (this is a convention and is not a hard rule).
+If the <code>@variables</code> is provided in the definition, it will be merged with rule variables after the execution.
+Note that variables (with the same keys) resulting from executing the rule will overwrite the ones provided in the definition.</p>
+</li>
+<li>
+<p><code>@description</code>: (string|null) [optional] Rule description.
+This value is optional and has no purpose other than to provide a description for the rule.</p>
+</li>
+<li>
+<p><code>@example</code>: (string|null) [optional] Rule example.
+This value is optional and has no purpose other than to provide an example of how to use the rule.</p>
+</li>
+</ul></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_definition">
+                                        protected                                        <abbr title="MAKS\Mighty\Rule\array&lt;string,null">array&lt;string,null</abbr>|string|array|<abbr title="MAKS\Mighty\Rule\callable&gt;">callable&gt;</abbr>
+                                                                                
+                                    </td>
+                <td>$definition</td>
+                <td class="last"><p>Rule definition array.</p></td>
+                <td><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#property_definition">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_input">
+                                        protected                                        mixed
+                                                                                
+                                    </td>
+                <td>$input</td>
+                <td class="last"><p>Rule input value.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_statement">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$statement</td>
+                <td class="last"><p>Rule statement string.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_translator">
+                    static                    protected                                        <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>
+                                                                                
+                                    </td>
+                <td>$translator</td>
+                <td class="last"><p>Rule messages translator.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(array|null $definition = null, string|null $statement = null, mixed $input = null)
+        
+                                            <p><p>Rule constructor.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___invoke">__invoke</a>(mixed $input)
+        
+                                            <p><p>Executes the rule when the object is invoked as a function.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___toString">__toString</a>()
+        
+                                            <p><p>Returns the current rule statement.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="MAKS\Mighty\Rule\array|static">array|static</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_arguments">arguments</a>(<abbr title="MAKS\Mighty\Rule\array|false">array|false</abbr> $arguments = false)
+        
+                                            <p><p>Sets the arguments of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_arguments">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_assertDefinitionIsValid">assertDefinitionIsValid</a>(array $definition)
+        
+                                            <p><p>Asserts that the rule definition is valid.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_assertDefinitionIsValid">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_assertStatementIsValid">assertStatementIsValid</a>(string $statement)
+        
+                                            <p><p>Asserts that the rule statement is valid.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="MAKS\Mighty\Rule\callable|static">callable|static</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_callback">callback</a>(<abbr title="MAKS\Mighty\Rule\callable|false">callable|false</abbr> $callback = false)
+        
+                                            <p><p>Sets the callback of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_callback">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="MAKS\Mighty\Rule\array|static">array|static</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_comparison">comparison</a>(<abbr title="MAKS\Mighty\Rule\array|false">array|false</abbr> $comparison = false)
+        
+                                            <p><p>Sets the comparison of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_comparison">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createErrorMessage">createErrorMessage</a>(string|null $message = null, array|null $variables = null)
+        
+                                            <p><p>Creates an error message for the rule using the currently available variables or the passed ones.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="MAKS\Mighty\Rule\null|string|static">null|string|static</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_description">description</a>(<abbr title="MAKS\Mighty\Rule\string|false">string|false</abbr> $description = false)
+        
+                                            <p><p>Sets the description of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_description">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="MAKS\Mighty\Rule\null|string|static">null|string|static</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_example">example</a>(<abbr title="MAKS\Mighty\Rule\string|false">string|false</abbr> $example = false)
+        
+                                            <p><p>Sets the example of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_example">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_execute">execute</a>(mixed $input = null)
+        
+                                            <p><p>Executes the rule against some input (the current one or the passed one).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getArguments">getArguments</a>()
+        
+                                            <p><p>Gets the arguments of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_getArguments">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    callable
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCallback">getCallback</a>()
+        
+                                            <p><p>Gets the callback of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_getCallback">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getComparison">getComparison</a>()
+        
+                                            <p><p>Gets the comparison of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_getComparison">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getDefinition">getDefinition</a>()
+        
+                                            <p><p>Gets rule definition array.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_getDefinition">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getDescription">getDescription</a>()
+        
+                                            <p><p>Gets the description of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_getDescription">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getExample">getExample</a>()
+        
+                                            <p><p>Gets the example of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_getExample">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getInput">getInput</a>()
+        
+                                            <p><p>Gets rule input.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getMessage">getMessage</a>()
+        
+                                            <p><p>Gets the message of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_getMessage">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getName">getName</a>()
+        
+                                            <p><p>Gets the name of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_getName">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getParameters">getParameters</a>()
+        
+                                            <p><p>Gets the parameters of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_getParameters">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getStatement">getStatement</a>()
+        
+                                            <p><p>Gets rule statement string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getVariables">getVariables</a>()
+        
+                                            <p><p>Gets the variables of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_getVariables">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="MAKS\Mighty\Rule\string|static">string|static</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_message">message</a>(<abbr title="MAKS\Mighty\Rule\string|false">string|false</abbr> $message = false)
+        
+                                            <p><p>Sets the message of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_message">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="MAKS\Mighty\Rule\string|static">string|static</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_name">name</a>(<abbr title="MAKS\Mighty\Rule\string|false">string|false</abbr> $name = false)
+        
+                                            <p><p>Sets the name of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_name">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="MAKS\Mighty\Rule\array|static">array|static</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parameters">parameters</a>(<abbr title="MAKS\Mighty\Rule\array|false">array|false</abbr> $parameters = false)
+        
+                                            <p><p>Sets the parameters of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_parameters">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setArguments">setArguments</a>(array $arguments)
+        
+                                            <p><p>Gets the arguments of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_setArguments">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setCallback">setCallback</a>(callable $callback)
+        
+                                            <p><p>Sets the callback of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_setCallback">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setComparison">setComparison</a>(array $comparison)
+        
+                                            <p><p>Sets the comparison of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_setComparison">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setDefinition">setDefinition</a>(array $definition)
+        
+                                            <p><p>Sets rule definition array.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_setDefinition">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setDescription">setDescription</a>(string $description)
+        
+                                            <p><p>Sets the description of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_setDescription">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setExample">setExample</a>(string $example)
+        
+                                            <p><p>Sets the example of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_setExample">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Rule.html"><abbr title="MAKS\Mighty\Rule">Rule</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setInput">setInput</a>(mixed $input)
+        
+                                            <p><p>Sets rule input.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setMessage">setMessage</a>(string $message)
+        
+                                            <p><p>Sets the message of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_setMessage">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setMessageTranslator">setMessageTranslator</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $translator)
+        
+                                            <p><p>Sets rule messages global translator.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setName">setName</a>(string $name)
+        
+                                            <p><p>Sets the name of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_setName">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setParameters">setParameters</a>(array $parameters)
+        
+                                            <p><p>Sets the parameters of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_setParameters">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Rule.html"><abbr title="MAKS\Mighty\Rule">Rule</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setStatement">setStatement</a>(string $statement)
+        
+                                            <p><p>Sets rule statement string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setVariables">setVariables</a>(array|null $variables)
+        
+                                            <p><p>Sets the variables of the rule.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_setVariables">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="MAKS\Mighty\Rule\null|array|static">null|array|static</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_variables">variables</a>(<abbr title="MAKS\Mighty\Rule\null|array|false">null|array|false</abbr> $variables = false)
+        
+                                            <p><p>Sets the variables of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../MAKS/Mighty/Rule/Definition.html#method_variables">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></small></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule.php#L80">at line 80</a></div>
+        <code>                    
+    <strong>__construct</strong>(array|null $definition = null, string|null $statement = null, mixed $input = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Rule constructor.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|null</td>
+                <td>$definition</td>
+                <td><p>[optional] Rule definition.</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$statement</td>
+                <td><p>[optional] Rule statement.</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$input</td>
+                <td><p>[optional] Rule input.</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___invoke">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule.php#L106">at line 106</a></div>
+        <code>                    mixed
+    <strong>__invoke</strong>(mixed $input)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Executes the rule when the object is invoked as a function.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$input</td>
+                <td><p>Rule input.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule.php#L116">at line 116</a></div>
+        <code>                    string
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the current rule statement.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_arguments">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_arguments">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L468">at line 468</a></div>
+        <code>                    <abbr title="MAKS\Mighty\Rule\array|static">array|static</abbr>
+    <strong>arguments</strong>(<abbr title="MAKS\Mighty\Rule\array|false">array|false</abbr> $arguments = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the arguments of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="MAKS\Mighty\Rule\array|false">array|false</abbr></td>
+                <td>$arguments</td>
+                <td><p>The arguments of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="MAKS\Mighty\Rule\array|static">array|static</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_assertDefinitionIsValid">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_assertDefinitionIsValid">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L161">at line 161</a></div>
+        <code>            protected        void
+    <strong>assertDefinitionIsValid</strong>(array $definition)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Asserts that the rule definition is valid.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$definition</td>
+                <td><p>The rule definition.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/InvalidRuleDefinitionException.html"><abbr title="MAKS\Mighty\Exception\InvalidRuleDefinitionException">InvalidRuleDefinitionException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_assertStatementIsValid">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule.php#L143">at line 143</a></div>
+        <code>            protected        void
+    <strong>assertStatementIsValid</strong>(string $statement)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Asserts that the rule statement is valid.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$statement</td>
+                <td><p>Rule statement.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/InvalidRuleStatementException.html"><abbr title="MAKS\Mighty\Exception\InvalidRuleStatementException">InvalidRuleStatementException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_callback">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_callback">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L484">at line 484</a></div>
+        <code>                    <abbr title="MAKS\Mighty\Rule\callable|static">callable|static</abbr>
+    <strong>callback</strong>(<abbr title="MAKS\Mighty\Rule\callable|false">callable|false</abbr> $callback = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the callback of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="MAKS\Mighty\Rule\callable|false">callable|false</abbr></td>
+                <td>$callback</td>
+                <td><p>The callback of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="MAKS\Mighty\Rule\callable|static">callable|static</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_comparison">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_comparison">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L516">at line 516</a></div>
+        <code>                    <abbr title="MAKS\Mighty\Rule\array|static">array|static</abbr>
+    <strong>comparison</strong>(<abbr title="MAKS\Mighty\Rule\array|false">array|false</abbr> $comparison = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the comparison of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="MAKS\Mighty\Rule\array|false">array|false</abbr></td>
+                <td>$comparison</td>
+                <td><p>The comparison of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="MAKS\Mighty\Rule\array|static">array|static</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createErrorMessage">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule.php#L309">at line 309</a></div>
+        <code>                    string
+    <strong>createErrorMessage</strong>(string|null $message = null, array|null $variables = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates an error message for the rule using the currently available variables or the passed ones.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$message</td>
+                <td><p>[optional] Override for current rule message.</p></td>
+            </tr>
+                    <tr>
+                <td>array|null</td>
+                <td>$variables</td>
+                <td><p>[optional] Overrides for current rule variables (will be merged with current rule variables).</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The message with the variables injected.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_description">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_description">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L564">at line 564</a></div>
+        <code>                    <abbr title="MAKS\Mighty\Rule\null|string|static">null|string|static</abbr>
+    <strong>description</strong>(<abbr title="MAKS\Mighty\Rule\string|false">string|false</abbr> $description = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the description of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="MAKS\Mighty\Rule\string|false">string|false</abbr></td>
+                <td>$description</td>
+                <td><p>The description of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="MAKS\Mighty\Rule\null|string|static">null|string|static</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_example">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_example">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L580">at line 580</a></div>
+        <code>                    <abbr title="MAKS\Mighty\Rule\null|string|static">null|string|static</abbr>
+    <strong>example</strong>(<abbr title="MAKS\Mighty\Rule\string|false">string|false</abbr> $example = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the example of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="MAKS\Mighty\Rule\string|false">string|false</abbr></td>
+                <td>$example</td>
+                <td><p>The example of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="MAKS\Mighty\Rule\null|string|static">null|string|static</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_execute">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule.php#L215">at line 215</a></div>
+        <code>                    mixed
+    <strong>execute</strong>(mixed $input = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Executes the rule against some input (the current one or the passed one).</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$input</td>
+                <td><p>[optional] The input that the rule will be executed against.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/InexecutableRuleException.html"><abbr title="MAKS\Mighty\Exception\InexecutableRuleException">InexecutableRuleException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getArguments">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_getArguments">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L258">at line 258</a></div>
+        <code>                    array
+    <strong>getArguments</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets the arguments of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCallback">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_getCallback">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L282">at line 282</a></div>
+        <code>                    callable
+    <strong>getCallback</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets the callback of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>callable</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getComparison">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_getComparison">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L330">at line 330</a></div>
+        <code>                    array
+    <strong>getComparison</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets the comparison of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDefinition">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_getDefinition">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L205">at line 205</a></div>
+        <code>                    array
+    <strong>getDefinition</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets rule definition array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDescription">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_getDescription">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L402">at line 402</a></div>
+        <code>                    string|null
+    <strong>getDescription</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets the description of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getExample">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_getExample">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L426">at line 426</a></div>
+        <code>                    string|null
+    <strong>getExample</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets the example of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getInput">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule.php#L185">at line 185</a></div>
+        <code>                    mixed
+    <strong>getInput</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets rule input.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMessage">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_getMessage">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L378">at line 378</a></div>
+        <code>                    string
+    <strong>getMessage</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets the message of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getName">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_getName">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L234">at line 234</a></div>
+        <code>                    string
+    <strong>getName</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets the name of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getParameters">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_getParameters">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L306">at line 306</a></div>
+        <code>                    array
+    <strong>getParameters</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets the parameters of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getStatement">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule.php#L157">at line 157</a></div>
+        <code>                    string
+    <strong>getStatement</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets rule statement string.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getVariables">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_getVariables">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L354">at line 354</a></div>
+        <code>                    array|null
+    <strong>getVariables</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets the variables of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_message">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_message">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L548">at line 548</a></div>
+        <code>                    <abbr title="MAKS\Mighty\Rule\string|static">string|static</abbr>
+    <strong>message</strong>(<abbr title="MAKS\Mighty\Rule\string|false">string|false</abbr> $message = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the message of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="MAKS\Mighty\Rule\string|false">string|false</abbr></td>
+                <td>$message</td>
+                <td><p>The message of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="MAKS\Mighty\Rule\string|static">string|static</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_name">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_name">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L452">at line 452</a></div>
+        <code>                    <abbr title="MAKS\Mighty\Rule\string|static">string|static</abbr>
+    <strong>name</strong>(<abbr title="MAKS\Mighty\Rule\string|false">string|false</abbr> $name = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the name of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="MAKS\Mighty\Rule\string|false">string|false</abbr></td>
+                <td>$name</td>
+                <td><p>The name of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="MAKS\Mighty\Rule\string|static">string|static</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parameters">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_parameters">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L500">at line 500</a></div>
+        <code>                    <abbr title="MAKS\Mighty\Rule\array|static">array|static</abbr>
+    <strong>parameters</strong>(<abbr title="MAKS\Mighty\Rule\array|false">array|false</abbr> $parameters = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the parameters of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="MAKS\Mighty\Rule\array|false">array|false</abbr></td>
+                <td>$parameters</td>
+                <td><p>The parameters of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="MAKS\Mighty\Rule\array|static">array|static</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setArguments">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_setArguments">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L270">at line 270</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+    <strong>setArguments</strong>(array $arguments)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets the arguments of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td><p>The arguments of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCallback">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_setCallback">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L294">at line 294</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+    <strong>setCallback</strong>(callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the callback of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td><p>The callback of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setComparison">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_setComparison">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L342">at line 342</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+    <strong>setComparison</strong>(array $comparison)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the comparison of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$comparison</td>
+                <td><p>The comparison of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDefinition">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_setDefinition">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L219">at line 219</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+    <strong>setDefinition</strong>(array $definition)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets rule definition array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$definition</td>
+                <td><p>Rule definition array.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/InvalidRuleDefinitionException.html"><abbr title="MAKS\Mighty\Exception\InvalidRuleDefinitionException">InvalidRuleDefinitionException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDescription">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_setDescription">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L414">at line 414</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+    <strong>setDescription</strong>(string $description)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the description of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$description</td>
+                <td><p>The description of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setExample">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_setExample">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L438">at line 438</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+    <strong>setExample</strong>(string $example)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the example of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$example</td>
+                <td><p>The example of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setInput">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule.php#L197">at line 197</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Rule.html"><abbr title="MAKS\Mighty\Rule">Rule</abbr></a>
+    <strong>setInput</strong>(mixed $input)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets rule input.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$input</td>
+                <td><p>Rule input.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Rule.html"><abbr title="MAKS\Mighty\Rule">Rule</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setMessage">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_setMessage">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L390">at line 390</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+    <strong>setMessage</strong>(string $message)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the message of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td><p>The message of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setMessageTranslator">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule.php#L129">at line 129</a></div>
+        <code>        static            void
+    <strong>setMessageTranslator</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $translator)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets rule messages global translator.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$translator</td>
+                <td><p>Rule messages translator callback.
+The callback will be passed the following arguments and must return a string:</p>
+<ul>
+<li>The <code>$message</code> before injecting the placeholders.</li>
+<li>The <code>$name</code> of the rule.</li>
+</ul></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setName">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_setName">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L246">at line 246</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+    <strong>setName</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the name of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>The name of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setParameters">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_setParameters">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L318">at line 318</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+    <strong>setParameters</strong>(array $parameters)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the parameters of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$parameters</td>
+                <td><p>The parameters of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setStatement">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule.php#L171">at line 171</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Rule.html"><abbr title="MAKS\Mighty\Rule">Rule</abbr></a>
+    <strong>setStatement</strong>(string $statement)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets rule statement string.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$statement</td>
+                <td><p>Rule statement.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Rule.html"><abbr title="MAKS\Mighty\Rule">Rule</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/InvalidRuleStatementException.html"><abbr title="MAKS\Mighty\Exception\InvalidRuleStatementException">InvalidRuleStatementException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setVariables">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_setVariables">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L366">at line 366</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a>
+    <strong>setVariables</strong>(array|null $variables)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the variables of the rule.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|null</td>
+                <td>$variables</td>
+                <td><p>The variables of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Rule/Definition.html"><abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_variables">
+        <div class="location">in <a href="../../MAKS/Mighty/Rule/Definition.html#method_variables">
+<abbr title="MAKS\Mighty\Rule\Definition">Definition</abbr></a> <a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Rule/Definition.php#L532">at line 532</a></div>
+        <code>                    <abbr title="MAKS\Mighty\Rule\null|array|static">null|array|static</abbr>
+    <strong>variables</strong>(<abbr title="MAKS\Mighty\Rule\null|array|false">null|array|false</abbr> $variables = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the variables of the rule (returns object), or gets it if parameter is <code>false</code> or not specified.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="MAKS\Mighty\Rule\null|array|false">null|array|false</abbr></td>
+                <td>$variables</td>
+                <td><p>The variables of the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="MAKS\Mighty\Rule\null|array|static">null|array|static</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Want to learn more about Mighty? Click  <a href="https://github.com/MarwanAlsoltany/mighty" rel="noreferrer noopener" target="_blank">here</a> to view the source code on GitHub!</div></div>
+    </div>
+    </body>
+
+</html>

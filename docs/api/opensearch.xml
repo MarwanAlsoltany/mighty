@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:referrer="http://a9.com/-/opensearch/extensions/referrer/">
+    <ShortName>Mighty API Docs (master)</ShortName>
+    <Description>Searches Mighty API Docs (master)</Description>
+    <Tags>Mighty API Docs</Tags>
+    <Url type="text/html" method="GET" template="https://MarwanAlsoltany.github.io/mighty/search.html?search={searchTerms}&amp;utm_source={referrer:source?}"/>
+    <InputEncoding>UTF-8</InputEncoding>
+    <AdultContent>false</AdultContent>
+</OpenSearchDescription>

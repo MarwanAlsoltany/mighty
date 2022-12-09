@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>MAKS\Mighty\Validation\Expression | Mighty API Docs</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://MarwanAlsoltany.github.io/mighty/opensearch.xml"
+          title="Mighty API Docs (master)" />
+    </head>
+
+    <body id="class" data-name="class:MAKS_Mighty_Validation_Expression" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Mighty API Docs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../MAKS.html">MAKS</a></li><li class="backslash">\</li><li><a href="../../../MAKS/Mighty.html">Mighty</a></li><li class="backslash">\</li><li><a href="../../../MAKS/Mighty/Validation.html">Validation</a></li><li class="backslash">\</li><li>Expression</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Expression    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Expression</strong>        implements        <a target="_blank" rel="noopener" href="https://www.php.net/Stringable">Stringable</a>        (<a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Validation expression builder.</p></p>            <p><p>Expression Builder implementation for the Mighty Validation Expression Language (mVEL) <code>v1</code> (<code>v1.*.*</code>).</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        BEHAVIORS
+                                    </td>
+                <td class="last">
+                    <p><em><p>Expression behaviors.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPERATORS
+                                    </td>
+                <td class="last">
+                    <p><em><p>Expression operators.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_buffer">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$buffer</td>
+                <td class="last"><p>Expression string buffer.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_tokens">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$tokens</td>
+                <td class="last"><p>Expression string buffer tokens.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___call">__call</a>(string $name, array $arguments)
+        
+                                            <p><p>Provides rules and aliases as class methods.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___toString">__toString</a>()
+        
+                                            <p><p>Returns the current expression string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_and">and</a>()
+        
+                                            <p><p>Adds AND operator (ampersand: <code>&amp;</code>) (default). Ands the next rule/group.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_build">build</a>()
+        
+                                            <p><p>Returns the current expression string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_close">close</a>()
+        
+                                            <p><p>Adds CLOSE operator (closing parenthesis: <code>)</code>). Ends the current group.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_comment">comment</a>(string $text)
+        
+                                            <p><p>Returns a the passed string as a valid comment.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_concat">concat</a>(string $string)
+        
+                                            <p><p>Writes the passed string to the current expression string buffer.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createRuleStatement">createRuleStatement</a>(string $name, array $arguments)
+        
+                                            <p><p>Returns a valid rule statement from the passed name and arguments.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getBehaviorChars">getBehaviorChars</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getOperatorChars">getOperatorChars</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_group">group</a>(callable $callback)
+        
+                                            <p><p>Groups a set of rules inside a pair of parentheses <code>()</code>.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_macro">macro</a>(string $macro)
+        
+                                            <p><p>Writes a macro to the current expression string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_normal">normal</a>()
+        
+                                            <p><p>Makes the expression normal (executes all checks). The is the default behavior.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_not">not</a>()
+        
+                                            <p><p>Adds NOT operator (tilde: <code>~</code>). Negates the next rule/group.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_open">open</a>()
+        
+                                            <p><p>Adds OPEN operator (opening parenthesis: <code>(</code>). Starts a new group.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_optimistic">optimistic</a>()
+        
+                                            <p><p>Makes the expression optimistic (stop checking after first success).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_or">or</a>()
+        
+                                            <p><p>Adds OR operator (pipe: <code>|</code>). Ors the next rule/group.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_pessimistic">pessimistic</a>()
+        
+                                            <p><p>Makes the expression pessimistic (stop checking after first failure).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_rule">rule</a>(string $rule)
+        
+                                            <p><p>Writes a rule to the current expression string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_variable">variable</a>(string $key)
+        
+                                            <p><p>Returns a the passed key as a valid back-reference injectable.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_write">write</a>(string $string)
+        
+                                            <p><p>Writes the passed string to the current expression string buffer.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_xor">xor</a>()
+        
+                                            <p><p>Adds XOR operator (caret: <code>^</code>). Xors the next rule/group.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___call">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L88">at line 88</a></div>
+        <code>                    mixed
+    <strong>__call</strong>(string $name, array $arguments)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Provides rules and aliases as class methods.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L77">at line 77</a></div>
+        <code>                    string
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the current expression string.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_and">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L273">at line 273</a></div>
+        <code>                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+    <strong>and</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds AND operator (ampersand: <code>&amp;</code>) (default). Ands the next rule/group.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_build">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L427">at line 427</a></div>
+        <code>                    string
+    <strong>build</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the current expression string.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../MAKS/Mighty/Exception/InvalidValidationExpressionException.html"><abbr title="MAKS\Mighty\Exception\InvalidValidationExpressionException">InvalidValidationExpressionException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_close">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L321">at line 321</a></div>
+        <code>                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+    <strong>close</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds CLOSE operator (closing parenthesis: <code>)</code>). Ends the current group.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_comment">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L410">at line 410</a></div>
+        <code>        static            string
+    <strong>comment</strong>(string $text)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a the passed string as a valid comment.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$text</td>
+                <td><p>Comment text.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>A valid comment or an empty string if the passed parameter was empty.</p>
+<p>NOTE: This method returns the passed string as a valid comment (<code>∕*text*∕</code>) only,
+and does NOT add it to the buffer, use <code>self::concat()</code> to add it.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_concat">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L149">at line 149</a></div>
+        <code>                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+    <strong>concat</strong>(string $string)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Writes the passed string to the current expression string buffer.</p></p>                <p><p>Note that the necessary operators will NOT be added automatically (use <code>self::write()</code> instead).
+Note that this method may make the expression fail when build if it is malformed.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$string</td>
+                <td><p>Rule, rule statement, rule alias, rule macro, an operator, a variable, a comment, or any arbitrary string.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createRuleStatement">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L463">at line 463</a></div>
+        <code>            protected        string
+    <strong>createRuleStatement</strong>(string $name, array $arguments)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a valid rule statement from the passed name and arguments.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>Rule name, preferably in camelCase.</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td><p>Rule arguments.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The rule statement.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getBehaviorChars">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L129">at line 129</a></div>
+        <code>                private    string
+    <strong>getBehaviorChars</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getOperatorChars">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L101">at line 101</a></div>
+        <code>                private    array
+    <strong>getOperatorChars</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_group">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L366">at line 366</a></div>
+        <code>                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+    <strong>group</strong>(callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Groups a set of rules inside a pair of parentheses <code>()</code>.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td><p>The callback that will be called to build the group.
+The callback will be bound to the current instance and/or receive it as the first parameter if can't be bound.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_macro">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L349">at line 349</a></div>
+        <code>                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+    <strong>macro</strong>(string $macro)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Writes a macro to the current expression string.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$macro</td>
+                <td><p>Macro name (without <code>[]</code>).</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_normal">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L199">at line 199</a></div>
+        <code>                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+    <strong>normal</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Makes the expression normal (executes all checks). The is the default behavior.</p></p>                <p><p>NOTE: Use this to remove an already added behavior.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_not">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L261">at line 261</a></div>
+        <code>                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+    <strong>not</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds NOT operator (tilde: <code>~</code>). Negates the next rule/group.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_open">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L309">at line 309</a></div>
+        <code>                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+    <strong>open</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds OPEN operator (opening parenthesis: <code>(</code>). Starts a new group.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_optimistic">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L221">at line 221</a></div>
+        <code>                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+    <strong>optimistic</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Makes the expression optimistic (stop checking after first success).</p></p>                <p><p>NOTE: This has effect only if the expression is not already <code>PESSIMISTIC</code>.</p>
+<p>NOTE: Be careful when using <code>OPTIMISTIC</code> with <code>AND</code> or <code>XOR</code>.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_or">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L285">at line 285</a></div>
+        <code>                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+    <strong>or</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds OR operator (pipe: <code>|</code>). Ors the next rule/group.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_pessimistic">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L243">at line 243</a></div>
+        <code>                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+    <strong>pessimistic</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Makes the expression pessimistic (stop checking after first failure).</p></p>                <p><p>NOTE: This has effect only if the expression is not already <code>PESSIMISTIC</code>.</p>
+<p>NOTE: Be careful when using <code>PESSIMISTIC</code> with <code>OR</code> or <code>XOR</code>.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_rule">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L335">at line 335</a></div>
+        <code>                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+    <strong>rule</strong>(string $rule)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Writes a rule to the current expression string.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$rule</td>
+                <td><p>Rule statement (or rule alias).</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_variable">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L391">at line 391</a></div>
+        <code>        static            string
+    <strong>variable</strong>(string $key)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a the passed key as a valid back-reference injectable.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>Variable key (without <code>$}</code>).</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>A valid back-reference or an empty string if the passed parameter was empty.</p>
+<p>NOTE: This method returns the passed key as a valid back-reference (<code>${key}</code>) only,
+and NOT the actual value of the variable and does NOT add it to the buffer.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_write">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L165">at line 165</a></div>
+        <code>                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+    <strong>write</strong>(string $string)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Writes the passed string to the current expression string buffer.</p></p>                <p><p>Note that the necessary operators will be added automatically.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$string</td>
+                <td><p>Rule, rule statement, rule alias, rule macro or an operator.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_xor">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Expression.php#L297">at line 297</a></div>
+        <code>                    <a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a>
+    <strong>xor</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds XOR operator (caret: <code>^</code>). Xors the next rule/group.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../MAKS/Mighty/Validation/Expression.html"><abbr title="MAKS\Mighty\Validation\Expression">Expression</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Want to learn more about Mighty? Click  <a href="https://github.com/MarwanAlsoltany/mighty" rel="noreferrer noopener" target="_blank">here</a> to view the source code on GitHub!</div></div>
+    </div>
+    </body>
+
+</html>

@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>MAKS\Mighty\Validation\Constraint\Validator | Mighty API Docs</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://MarwanAlsoltany.github.io/mighty/opensearch.xml"
+          title="Mighty API Docs (master)" />
+    </head>
+
+    <body id="class" data-name="class:MAKS_Mighty_Validation_Constraint_Validator" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Mighty API Docs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../MAKS.html">MAKS</a></li><li class="backslash">\</li><li><a href="../../../../MAKS/Mighty.html">Mighty</a></li><li class="backslash">\</li><li><a href="../../../../MAKS/Mighty/Validation.html">Validation</a></li><li class="backslash">\</li><li><a href="../../../../MAKS/Mighty/Validation/Constraint.html">Constraint</a></li><li class="backslash">\</li><li>Validator</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Validator    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Validator</strong>        (<a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Constraint/Validator.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Validatable object constraints validator.</p></p>                    </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                            private
+                                                                                CLASS_ATTRIBUTE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                CONSTANT_ATTRIBUTE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                METHOD_ATTRIBUTE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                PROPERTY_ATTRIBUTE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_constraints">
+                                        protected                                        <abbr title="MAKS\Mighty\Validation\Constraint\array&lt;string,\MAKS\Mighty\Validation\Constraint&gt;">Constraint&gt;</abbr>
+                                                                                
+                                    </td>
+                <td>$constraints</td>
+                <td class="last"><p>Validatable object constraints.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_errors">
+                                        protected                                        <abbr title="MAKS\Mighty\Validation\Constraint\array&lt;string,\MAKS\Mighty\Result&gt;">Result&gt;</abbr>
+                                                                                
+                                    </td>
+                <td>$errors</td>
+                <td class="last"><p>Validatable object validation errors.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_reflections">
+                    static                    protected                                        <abbr title="MAKS\Mighty\Validation\Constraint\array&lt;string,\Reflector">Reflector</abbr>|Reflector[]&gt;
+                                                                                
+                                    </td>
+                <td>$reflections</td>
+                <td class="last"><p>Validatable objects reflections cache.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_results">
+                                        protected                                        <abbr title="MAKS\Mighty\Validation\Constraint\array&lt;string,\MAKS\Mighty\Result&gt;">Result&gt;</abbr>
+                                                                                
+                                    </td>
+                <td>$results</td>
+                <td class="last"><p>Validatable object validation results.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../../MAKS/Mighty/Validation/Constraint/ValidatableObjectInterface.html"><abbr title="MAKS\Mighty\Validation\Constraint\ValidatableObjectInterface">ValidatableObjectInterface</abbr></a> $object)
+        
+                                            <p><p>Validator constructor.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_check">check</a>()
+        
+                                            <p><p>Checks object constraints and throws an exception if validation failed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_checkAttributes">checkAttributes</a>(array $attributes, string $type, string $name, mixed $value, string|null $cacheKey = null)
+        
+                                            <p><p>Checks attributes of the passed validatable object reflection.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_checkConstraint">checkConstraint</a>(<a href="../../../../MAKS/Mighty/Validation/Constraint.html"><abbr title="MAKS\Mighty\Validation\Constraint">Constraint</abbr></a> $constraint, string $type, string $name, mixed $value)
+        
+                                            <p><p>Checks constraints of the passed validatable object reflection.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="MAKS\Mighty\Validation\Constraint\never">never</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_fail">fail</a>(<a href="../../../../MAKS/Mighty/Result.html"><abbr title="MAKS\Mighty\Result">Result</abbr></a> ...$violation)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getErrors">getErrors</a>()
+        
+                                            <p><p>Returns object constraints validation errors.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getMemoizationKey">getMemoizationKey</a>(string $reflection, string $target = &#039;class&#039;, string $prefix = &#039;::&#039;, string $suffix = &#039;&#039;)
+        
+                                            <p><p>Returns a unique identifier for the specifed reflection class name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getResults">getResults</a>()
+        
+                                            <p><p>Returns object constraints validation results.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validate">validate</a>()
+        
+                                            <p><p>Validates object constraints and returns validation results.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateClass">validateClass</a>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a> $reflection)
+        
+                                            <p><p>Validates class attributes of the passed validatable object reflection.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateConstants">validateConstants</a>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a> $reflection)
+        
+                                            <p><p>Validates constants attributes of the passed validatable object reflection.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateMethods">validateMethods</a>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a> $reflection)
+        
+                                            <p><p>Validates methods attributes of the passed validatable object reflection.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateProperties">validateProperties</a>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a> $reflection)
+        
+                                            <p><p>Validates properties attributes of the passed validatable object reflection.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Constraint/Validator.php#L81">at line 81</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../../MAKS/Mighty/Validation/Constraint/ValidatableObjectInterface.html"><abbr title="MAKS\Mighty\Validation\Constraint\ValidatableObjectInterface">ValidatableObjectInterface</abbr></a> $object)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validator constructor.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../MAKS/Mighty/Validation/Constraint/ValidatableObjectInterface.html"><abbr title="MAKS\Mighty\Validation\Constraint\ValidatableObjectInterface">ValidatableObjectInterface</abbr></a></td>
+                <td>$object</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_check">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Constraint/Validator.php#L98">at line 98</a></div>
+        <code>                    void
+    <strong>check</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks object constraints and throws an exception if validation failed.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../MAKS/Mighty/Exception/ValidationFailedException.html"><abbr title="MAKS\Mighty\Exception\ValidationFailedException">ValidationFailedException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../MAKS/Mighty/Exception/ValidationLogicException.html"><abbr title="MAKS\Mighty\Exception\ValidationLogicException">ValidationLogicException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkAttributes">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Constraint/Validator.php#L342">at line 342</a></div>
+        <code>            protected        void
+    <strong>checkAttributes</strong>(array $attributes, string $type, string $name, mixed $value, string|null $cacheKey = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks attributes of the passed validatable object reflection.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$attributes</td>
+                <td><p>the reflection on the validatable object attributes.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td><p>The type of the attribute.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>The name of the field.</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>The value of the field.</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$cacheKey</td>
+                <td><p>The cache of the object.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../MAKS/Mighty/Exception/ValidationFailedException.html"><abbr title="MAKS\Mighty\Exception\ValidationFailedException">ValidationFailedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkConstraint">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Constraint/Validator.php#L365">at line 365</a></div>
+        <code>            protected        void
+    <strong>checkConstraint</strong>(<a href="../../../../MAKS/Mighty/Validation/Constraint.html"><abbr title="MAKS\Mighty\Validation\Constraint">Constraint</abbr></a> $constraint, string $type, string $name, mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks constraints of the passed validatable object reflection.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../MAKS/Mighty/Validation/Constraint.html"><abbr title="MAKS\Mighty\Validation\Constraint">Constraint</abbr></a></td>
+                <td>$constraint</td>
+                <td><p>The constraint to check.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td><p>The type of the subject.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>The name of the subject.</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>The value of the subject.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../MAKS/Mighty/Exception/ValidationFailedException.html"><abbr title="MAKS\Mighty\Exception\ValidationFailedException">ValidationFailedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fail">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Constraint/Validator.php#L397">at line 397</a></div>
+        <code>                private    <abbr title="MAKS\Mighty\Validation\Constraint\never">never</abbr>
+    <strong>fail</strong>(<a href="../../../../MAKS/Mighty/Result.html"><abbr title="MAKS\Mighty\Result">Result</abbr></a> ...$violation)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../MAKS/Mighty/Result.html"><abbr title="MAKS\Mighty\Result">Result</abbr></a></td>
+                <td>...$violation</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="MAKS\Mighty\Validation\Constraint\never">never</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getErrors">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Constraint/Validator.php#L162">at line 162</a></div>
+        <code>                    array
+    <strong>getErrors</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns object constraints validation errors.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMemoizationKey">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Constraint/Validator.php#L437">at line 437</a></div>
+        <code>                private    string
+    <strong>getMemoizationKey</strong>(string $reflection, string $target = &#039;class&#039;, string $prefix = &#039;::&#039;, string $suffix = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a unique identifier for the specifed reflection class name.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$reflection</td>
+                <td><p>Reflection class name.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$target</td>
+                <td><p>The target of the reflection.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$prefix</td>
+                <td><p>The prefix of the target.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$suffix</td>
+                <td><p>The suffix of the target.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getResults">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Constraint/Validator.php#L152">at line 152</a></div>
+        <code>                    array
+    <strong>getResults</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns object constraints validation results.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validate">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Constraint/Validator.php#L120">at line 120</a></div>
+        <code>                    array
+    <strong>validate</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validates object constraints and returns validation results.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateClass">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Constraint/Validator.php#L177">at line 177</a></div>
+        <code>            protected        void
+    <strong>validateClass</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a> $reflection)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validates class attributes of the passed validatable object reflection.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a></td>
+                <td>$reflection</td>
+                <td><p>The reflection on the validatable object.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../MAKS/Mighty/Exception/ValidationFailedException.html"><abbr title="MAKS\Mighty\Exception\ValidationFailedException">ValidationFailedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateConstants">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Constraint/Validator.php#L206">at line 206</a></div>
+        <code>            protected        void
+    <strong>validateConstants</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a> $reflection)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validates constants attributes of the passed validatable object reflection.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a></td>
+                <td>$reflection</td>
+                <td><p>The reflection on the validatable object.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../MAKS/Mighty/Exception/ValidationFailedException.html"><abbr title="MAKS\Mighty\Exception\ValidationFailedException">ValidationFailedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateMethods">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Constraint/Validator.php#L287">at line 287</a></div>
+        <code>            protected        void
+    <strong>validateMethods</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a> $reflection)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validates methods attributes of the passed validatable object reflection.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a></td>
+                <td>$reflection</td>
+                <td><p>The reflection on the validatable object.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../MAKS/Mighty/Exception/ValidationFailedException.html"><abbr title="MAKS\Mighty\Exception\ValidationFailedException">ValidationFailedException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../MAKS/Mighty/Exception/ValidationLogicException.html"><abbr title="MAKS\Mighty\Exception\ValidationLogicException">ValidationLogicException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateProperties">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validation/Constraint/Validator.php#L246">at line 246</a></div>
+        <code>            protected        void
+    <strong>validateProperties</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a> $reflection)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validates properties attributes of the passed validatable object reflection.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a></td>
+                <td>$reflection</td>
+                <td><p>The reflection on the validatable object.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../MAKS/Mighty/Exception/ValidationFailedException.html"><abbr title="MAKS\Mighty\Exception\ValidationFailedException">ValidationFailedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Want to learn more about Mighty? Click  <a href="https://github.com/MarwanAlsoltany/mighty" rel="noreferrer noopener" target="_blank">here</a> to view the source code on GitHub!</div></div>
+    </div>
+    </body>
+
+</html>

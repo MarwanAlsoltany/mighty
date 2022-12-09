@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>MAKS\Mighty\Support\Utility | Mighty API Docs</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://MarwanAlsoltany.github.io/mighty/opensearch.xml"
+          title="Mighty API Docs (master)" />
+    </head>
+
+    <body id="class" data-name="class:MAKS_Mighty_Support_Utility" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Mighty API Docs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../MAKS.html">MAKS</a></li><li class="backslash">\</li><li><a href="../../../MAKS/Mighty.html">Mighty</a></li><li class="backslash">\</li><li><a href="../../../MAKS/Mighty/Support.html">Support</a></li><li class="backslash">\</li><li>Utility</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Utility    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>Utility</strong>        (<a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Support/Utility.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Holder for various miscellaneous utility function.</p></p>                    </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_castToArray">castToArray</a>(mixed $variable)
+        
+                                            <p><p>Casts any variable (including objects) to an array recursively.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_expandArrayWildcards">expandArrayWildcards</a>(array $array, array $data)
+        
+                                            <p><p>Expands array wildcards by injecting the necessary keys from the available keys in the passed data.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getArrayValue">getArrayValue</a>(array $array, string $key, mixed $fallback = null)
+        
+                                            <p><p>Retrieves a value from an array via dot notation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getInjectionVariable">getInjectionVariable</a>(mixed $variable, string|null $fallback)
+        
+                                            <p><p>Determines whether the variable or the fallback should be used and returns it.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectInArray">injectInArray</a>(array $array, array $variables)
+        
+                                            <p><p>Injects variables into an array containing placeholders as values.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectInString">injectInString</a>(string $string, array $variables)
+        
+                                            <p><p>Injects variables into a string containing placeholders.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_interpolate">interpolate</a>(string $text, array $context = [], string $wrapper = &#039;{}&#039;)
+        
+                                            <p><p>Interpolates context values into text placeholders.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_transform">transform</a>(string $subject, string ...$transformations)
+        
+                                            <p><p>Transforms the case/content of a string by applying a one or more of the 26 available transformations.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_castToArray">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Support/Utility.php#L337">at line 337</a></div>
+        <code>        static            array
+    <strong>castToArray</strong>(mixed $variable)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Casts any variable (including objects) to an array recursively.</p></p>                <p><p>If the variable is an object or has an object as one of its items,
+the returned array will contain all public, protected, and private
+properties of the object as an associative array without prefixing.</p>
+<p>NOTE: This method is not recursive as in recalling the method as many times as needed.
+It uses iteration (uses 1 recursion stack frame) and leverages references and pointers
+instead of using copies, this makes the casting super fast, very efficient and consistent.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$variable</td>
+                <td><p>The variable to cast to an array.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_expandArrayWildcards">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Support/Utility.php#L139">at line 139</a></div>
+        <code>        static            array
+    <strong>expandArrayWildcards</strong>(array $array, array $data)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Expands array wildcards by injecting the necessary keys from the available keys in the passed data.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$array</td>
+                <td><p>The array with keys containing <code>*</code> in their dot notation representation.</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td><p>The data to retrieve the wildcards from.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The final array with the keys expanded.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getArrayValue">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Support/Utility.php#L208">at line 208</a></div>
+        <code>        static            mixed
+    <strong>getArrayValue</strong>(array $array, string $key, mixed $fallback = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Retrieves a value from an array via dot notation.</p></p>                <p><p>NOTE: Keys are allowed to have dots in them.
+NOTE: Keys with dots in their names have precedence over nested array.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$array</td>
+                <td><p>The array to get the value from.
+To be able to retrieve object properties (or an object within the passed array),
+pass the <code>$array</code> to <code>self::castToArray()</code> before passing it to this function.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>The key to the value.</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$fallback</td>
+                <td><p>The fallback value to return if the key has no value or null.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The actual value or the fallback value.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getInjectionVariable">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Support/Utility.php#L122">at line 122</a></div>
+        <code>        static        private    mixed
+    <strong>getInjectionVariable</strong>(mixed $variable, string|null $fallback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determines whether the variable or the fallback should be used and returns it.</p></p>                <p><p>The fallback is returned if the <code>$variable</code> is <code>null</code> or <code>''</code> (empty string); and <code>$fallback</code> is not <code>null</code>.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$variable</td>
+                <td><p>The variable to use.</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$fallback</td>
+                <td><p>The fallback to use.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The value to inject.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectInArray">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Support/Utility.php#L84">at line 84</a></div>
+        <code>        static            array
+    <strong>injectInArray</strong>(array $array, array $variables)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects variables into an array containing placeholders as values.</p></p>                <p><p>Placeholder must match: <code>/^((?:@?[a-z0-9]+[a-z0-9_\-\.]*)(?::.+?)?)$/i</code>.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$array</td>
+                <td><p>An array containing elements,
+where their values are strings for a key (in dot notation) in the passed variables.
+The syntax for the placeholder is <code>@someKey</code>, or <code>@someKey:fallback</code> to provide a fallback value.
+Fallbacks are used if the value of the provided key does not exist, equals <code>null</code>, or an empty string <code>''</code>.
+Note that no type casting is applied when injecting the values.</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$variables</td>
+                <td><p>The variables to get the values from to replace placeholders with their corresponding values.
+To be able to retrieve object properties (or an object within the passed array),
+pass the <code>$variables</code> to <code>self::castToArray()</code> before passing it to this function.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The final array with the values injected.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectInString">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Support/Utility.php#L38">at line 38</a></div>
+        <code>        static            string
+    <strong>injectInString</strong>(string $string, array $variables)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects variables into a string containing placeholders.</p></p>                <p><p>Placeholder must match: <code>/(\$\{(?:@?[a-z0-9]+[a-z0-9_\-\.]*+)(?::.+?)?\})/i</code>.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$string</td>
+                <td><p>The string to inject the values into.
+The placeholders will be simply replaced with their corresponding values.
+The syntax for the placeholder is <code>{@someKey}</code>, or <code>{@someKey:fallback}</code> to provide a fallback value.
+Fallbacks are used if the value of the provided key does not exist, equals <code>null</code>, or an empty string <code>''</code>.
+Note that type casting is applied when injecting the values (see <code>Serializer::serialize()</code> for the expected results).</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$variables</td>
+                <td><p>The variables to get the values from to replace placeholders with their corresponding values.
+To be able to retrieve object properties (or an object within the passed array),
+pass the <code>$variables</code> to <code>self::castToArray()</code> before passing it to this function.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The final string with the variables injected.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_interpolate">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Support/Utility.php#L428">at line 428</a></div>
+        <code>        static            string
+    <strong>interpolate</strong>(string $text, array $context = [], string $wrapper = &#039;{}&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Interpolates context values into text placeholders.</p></p>                <p><p>NOTE: Interpolated values be serialized to the most human readable form (mostly as JSON).</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$text</td>
+                <td><p>The text to interpolate.</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$context</td>
+                <td><p>An associative array like <code>['varName' =&gt; 'varValue']</code>.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$wrapper</td>
+                <td><p>The wrapper that indicate a variable. Max 2 chars or 0 for none, anything else will be ignored and &quot;}&quot; will be used instead.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The interpolated string.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_transform">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Support/Utility.php#L488">at line 488</a></div>
+        <code>        static            string
+    <strong>transform</strong>(string $subject, string ...$transformations)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Transforms the case/content of a string by applying a one or more of the 26 available transformations.</p></p>                <p><p>The transformations are applied in the fixes they are specified.
+Available transformations:</p>
+<ul>
+<li><code>clean</code>: discards all punctuations and meta-characters (@#%&amp;$^*+-=_~:;,.?!()}[]|/\'&quot;`), separates concatenated words [<code>ExampleString-num.1</code>, <code>Example String num 1</code>].</li>
+<li><code>alnum</code>: removes every thing other that english letters, numbers and spaces. [<code>Example@123</code> -&gt; <code>Example123</code>]</li>
+<li><code>alpha</code>: removes every thing other that english letters. [<code>Example123</code> -&gt; <code>Example</code>]</li>
+<li><code>numeric</code>: removes every thing other that numbers. [<code>Example123</code> -&gt; <code>123</code>]</li>
+<li><code>slug</code>: lowercase, all letters to their A-Z representation (transliteration), spaces to dashes, no special characters (URL-safe) [<code>Example (String)</code> -&gt; <code>example-string</code>].</li>
+<li><code>title</code>: titlecase [<code>example string</code> -&gt; <code>Example String</code>].</li>
+<li><code>sentence</code>: lowercase, first letter uppercase [<code>exampleString</code> -&gt; <code>Example string</code>].</li>
+<li><code>pascal</code>: titlecase, no spaces [<code>example string</code> -&gt; <code>ExampleString</code>].</li>
+<li><code>camel</code>: titlecase, no spaces, first letter lowercase [<code>example string</code> -&gt; <code>exampleString</code>].</li>
+<li><code>dot</code>: lowercase, spaces to dots [<code>Example String</code> -&gt; <code>example.string</code>].</li>
+<li><code>kebab</code>: lowercase, spaces to dashes [<code>Example String</code> -&gt; <code>example-string</code>].</li>
+<li><code>snake</code>: lowercase, spaces to underscores [<code>Example String</code> -&gt; <code>example_string</code>].</li>
+<li><code>constant</code>: uppercase, spaces to underscores [<code>Example String</code> -&gt; <code>EXAMPLE_STRING</code>].</li>
+<li><code>cobol</code>: uppercase, spaces to dashes [<code>example string</code> -&gt; <code>EXAMPLE-STRING</code>].</li>
+<li><code>train</code>: titlecase, spaces to dashes [<code>example string</code> -&gt; <code>Example-String</code>].</li>
+<li><code>lower</code>: lowercase (MB) [<code>Example String</code> -&gt; <code>example string</code>].</li>
+<li><code>upper</code>: uppercase (MB) [<code>Example String</code> -&gt; <code>EXAMPLE STRING</code>].</li>
+<li><code>spaceless</code>: removes any whitespaces [<code>Example String</code> -&gt; <code>ExampleString</code>].</li>
+<li>A built-in function name from this list can also be used: <code>strtolower</code>, <code>strtoupper</code>, <code>lcfirst</code>, <code>ucfirst</code>, <code>ucwords</code>, <code>trim</code>, <code>ltrim</code>, <code>rtrim</code>.</li>
+</ul>
+<p>NOTE: Unknown transformations will be ignored silently.</p>
+<p>NOTE: The subject (string) loses some of its characteristics when a transformation is applied,
+that means reversing the transformations will not guarantee getting the old subject back.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$subject</td>
+                <td><p>The string to transform.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>...$transformations</td>
+                <td><p>One or more transformations to apply.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The transformed string.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Want to learn more about Mighty? Click  <a href="https://github.com/MarwanAlsoltany/mighty" rel="noreferrer noopener" target="_blank">here</a> to view the source code on GitHub!</div></div>
+    </div>
+    </body>
+
+</html>

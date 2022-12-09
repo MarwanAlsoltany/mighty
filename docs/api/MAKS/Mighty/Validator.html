@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>MAKS\Mighty\Validator | Mighty API Docs</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://MarwanAlsoltany.github.io/mighty/opensearch.xml"
+          title="Mighty API Docs (master)" />
+    </head>
+
+    <body id="class" data-name="class:MAKS_Mighty_Validator" data-root-path="../../" data-search-index-url="../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Mighty API Docs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../MAKS.html">MAKS</a></li><li class="backslash">\</li><li><a href="../../MAKS/Mighty.html">Mighty</a></li><li class="backslash">\</li><li>Validator</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Validator    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Validator</strong>        (<a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                            protected                                                            DEFAULT_ALIASES_PATH
+                                    </td>
+                <td class="last">
+                    <p><em><p>Default validation rules aliases array path.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            protected                                                            DEFAULT_MACROS_PATH
+                                    </td>
+                <td class="last">
+                    <p><em><p>Default validation rules macros array path.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            protected                                                            DEFAULT_RULES_PATH
+                                    </td>
+                <td class="last">
+                    <p><em><p>Default validation rules array path.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                LOGIC_PATH
+                                    </td>
+                <td class="last">
+                    <p><em><p>Validation logic path.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_aliases">
+                                        protected                                        <abbr title="MAKS\Mighty\array&lt;string,string&gt;">array&lt;string,string&gt;</abbr>
+                                                                                
+                                    </td>
+                <td>$aliases</td>
+                <td class="last"><p>Available validation rules aliases.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_context">
+                                        protected                                        <abbr title="MAKS\Mighty\array&lt;string,array&lt;string,mixed&gt;&gt;">array&lt;string,array&lt;string,mixed&gt;&gt;</abbr>
+                                                                                
+                                    </td>
+                <td>$context</td>
+                <td class="last"><p>Current validation context (available results).</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_current">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$current</td>
+                <td class="last"><p>The currently validated data key.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_data">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$data</td>
+                <td class="last"><p>Currently loaded data.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_errors">
+                                        protected                                        <abbr title="MAKS\Mighty\array&lt;string,\MAKS\Mighty\Result&gt;">Result&gt;</abbr>
+                                                                                
+                                    </td>
+                <td>$errors</td>
+                <td class="last"><p>Validation errors of the currently loaded data.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_labels">
+                                        protected                                        <abbr title="MAKS\Mighty\array&lt;string,string&gt;">array&lt;string,string&gt;</abbr>
+                                                                                
+                                    </td>
+                <td>$labels</td>
+                <td class="last"><p>Currently loaded validation labels.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_macros">
+                                        protected                                        <abbr title="MAKS\Mighty\array&lt;string,string&gt;">array&lt;string,string&gt;</abbr>
+                                                                                
+                                    </td>
+                <td>$macros</td>
+                <td class="last"><p>Available validation rules macros.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_messages">
+                                        protected                                        <abbr title="MAKS\Mighty\array&lt;string,array&lt;string,string">array&lt;string,array&lt;string,string</abbr>|<abbr title="MAKS\Mighty\null&gt;&gt;">null&gt;&gt;</abbr>
+                                                                                
+                                    </td>
+                <td>$messages</td>
+                <td class="last"><p>Currently loaded validation messages.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_results">
+                                        protected                                        <abbr title="MAKS\Mighty\array&lt;string,\MAKS\Mighty\Result&gt;">Result&gt;</abbr>
+                                                                                
+                                    </td>
+                <td>$results</td>
+                <td class="last"><p>Validations results against the currently loaded data.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_rules">
+                                        protected                                        <abbr title="MAKS\Mighty\array&lt;string,\MAKS\Mighty\Rule&gt;">Rule&gt;</abbr>
+                                                                                
+                                    </td>
+                <td>$rules</td>
+                <td class="last"><p>Available validation rules.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_validations">
+                                        protected                                        <abbr title="MAKS\Mighty\array&lt;string">array&lt;string</abbr>|<abbr title="MAKS\Mighty\int,string">int,string</abbr>|<abbr title="MAKS\Mighty\Validation&gt;">Validation&gt;</abbr>
+                                                                                
+                                    </td>
+                <td>$validations</td>
+                <td class="last"><p>Currently loaded validations.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___clone">__clone</a>()
+        
+                                            <p><p>Resets validator's internal state when cloned.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<abbr title="MAKS\Mighty\iterable">iterable</abbr>|null $data = null, array|null $validations = null)
+        
+                                            <p><p>Validator constructor.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addAlias">addAlias</a>(string $name, string $rule)
+        
+                                            <p><p>Adds a new rule alias to the validator.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addMacro">addMacro</a>(string $name, <abbr title="string|MAKS\Mighty\Validation">Validation</abbr> $rules)
+        
+                                            <p><p>Adds a new rule macro to the validator.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addRule">addRule</a>(<abbr title="MAKS\Mighty\MAKS\Mighty\Rule|array">Rule|array</abbr> $rule)
+        
+                                            <p><p>Adds a new rule to the validator.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_check">check</a>()
+        
+                                            <p><p>Checks current validator's data against current validator's validations.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createErrorMessages">createErrorMessages</a>(array $validations)
+        
+                                            <p><p>Creates error messages for unsuccessful validations and injects the necessary variables into each message.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_executeRule">executeRule</a>(string $name, string $statement, mixed $input)
+        
+                                            <p><p>Executes a single validation rule.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getAliases">getAliases</a>()
+        
+                                            <p><p>Returns validator's available rules aliases.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getErrors">getErrors</a>()
+        
+                                            <p><p>Returns validation errors.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getMacros">getMacros</a>()
+        
+                                            <p><p>Returns validator's available rules macros.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getResults">getResults</a>()
+        
+                                            <p><p>Returns validation results (errors and successes).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getRules">getRules</a>()
+        
+                                            <p><p>Returns validator's available rules.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isOK">isOK</a>()
+        
+                                            <p><p>Checks whether the validation has passed or not.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_load">load</a>(string $path)
+        
+                                            <p><p>Loads the passed path as an array (<code>include $path</code>).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_reset">reset</a>()
+        
+                                            <p><p>Resets validator's internal state.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setData">setData</a>(<abbr title="MAKS\Mighty\iterable">iterable</abbr> $data)
+        
+                                            <p><p>Sets the data to validate.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setLabels">setLabels</a>(array $labels)
+        
+                                            <p><p>Sets labels for each data key. These labels will be injected in validation messages.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setMessages">setMessages</a>(array $messages)
+        
+                                            <p><p>Sets rule message override for each validation rule of each data key.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setValidations">setValidations</a>(array $validations)
+        
+                                            <p><p>Sets the validation expression for each data key.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validate">validate</a>()
+        
+                                            <p><p>Validates current validator's data against current validator's validations and return the results.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateAll">validateAll</a>(<abbr title="MAKS\Mighty\iterable">iterable</abbr> $data, array $validations)
+        
+                                            <p><p>Validates the passed data against the passed validations.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<abbr title="array|MAKS\Mighty\Result">Result</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateData">validateData</a>(mixed $data, <abbr title="MAKS\Mighty\MAKS\Mighty\Validation|string|array">Validation|string|array</abbr> $validation, array $messages = [], array $labels = [])
+        
+                                            <p><p>Validates the passed data against the passed validation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Result.html"><abbr title="MAKS\Mighty\Result">Result</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateOne">validateOne</a>(mixed $value, <abbr title="MAKS\Mighty\MAKS\Mighty\Validation|string">Validation|string</abbr> $validation)
+        
+                                            <p><p>Validates a single value against the passed validation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../MAKS/Mighty/Validation.html"><abbr title="MAKS\Mighty\Validation">Validation</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validation">validation</a>()
+        
+                                            <p><p>Returns an instance of the validation expression builder.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___clone">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L233">at line 233</a></div>
+        <code>                    void
+    <strong>__clone</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resets validator's internal state when cloned.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L220">at line 220</a></div>
+        <code>                    
+    <strong>__construct</strong>(<abbr title="MAKS\Mighty\iterable">iterable</abbr>|null $data = null, array|null $validations = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validator constructor.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="MAKS\Mighty\iterable">iterable</abbr>|null</td>
+                <td>$data</td>
+                <td><p>[optional] The data to validate.</p></td>
+            </tr>
+                    <tr>
+                <td>array|null</td>
+                <td>$validations</td>
+                <td><p>[optional] The validation rules for each data key.</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addAlias">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L730">at line 730</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a>
+    <strong>addAlias</strong>(string $name, string $rule)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds a new rule alias to the validator.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>Alias name.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$rule</td>
+                <td><p>Validation rule name.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/InvalidRuleAliasException.html"><abbr title="MAKS\Mighty\Exception\InvalidRuleAliasException">InvalidRuleAliasException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addMacro">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L770">at line 770</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a>
+    <strong>addMacro</strong>(string $name, <abbr title="string|MAKS\Mighty\Validation">Validation</abbr> $rules)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds a new rule macro to the validator.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>Macro name.</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="string|MAKS\Mighty\Validation">Validation</abbr></td>
+                <td>$rules</td>
+                <td><p>validation expression string or object.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/InvalidRuleMacroException.html"><abbr title="MAKS\Mighty\Exception\InvalidRuleMacroException">InvalidRuleMacroException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addRule">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L682">at line 682</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a>
+    <strong>addRule</strong>(<abbr title="MAKS\Mighty\MAKS\Mighty\Rule|array">Rule|array</abbr> $rule)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds a new rule to the validator.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="MAKS\Mighty\MAKS\Mighty\Rule|array">Rule|array</abbr></td>
+                <td>$rule</td>
+                <td><p>A rule object or a rule definition array
+(see <code>MAKS\Mighty\Rule::SCHEMA</code> for more info).</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/InvalidRuleDefinitionException.html"><abbr title="MAKS\Mighty\Exception\InvalidRuleDefinitionException">InvalidRuleDefinitionException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_check">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L372">at line 372</a></div>
+        <code>                    void
+    <strong>check</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks current validator's data against current validator's validations.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/ValidationFailedException.html"><abbr title="MAKS\Mighty\Exception\ValidationFailedException">ValidationFailedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createErrorMessages">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L650">at line 650</a></div>
+        <code>            protected        array
+    <strong>createErrorMessages</strong>(array $validations)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates error messages for unsuccessful validations and injects the necessary variables into each message.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$validations</td>
+                <td><p>The validations array. An associative array where key is the rule name and value is the result of the execution.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>An associative array where key is the rule name and value is the message.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_executeRule">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L607">at line 607</a></div>
+        <code>            protected        bool
+    <strong>executeRule</strong>(string $name, string $statement, mixed $input)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Executes a single validation rule.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>The name of the rule.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$statement</td>
+                <td><p>The statement of the rule.</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$input</td>
+                <td><p>The input to pass to the rule.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>The result of the execution.</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/UnknownValidationRuleException.html"><abbr title="MAKS\Mighty\Exception\UnknownValidationRuleException">UnknownValidationRuleException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/InexecutableRuleException.html"><abbr title="MAKS\Mighty\Exception\InexecutableRuleException">InexecutableRuleException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAliases">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L817">at line 817</a></div>
+        <code>                    array
+    <strong>getAliases</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns validator's available rules aliases.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getErrors">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L340">at line 340</a></div>
+        <code>                    array
+    <strong>getErrors</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns validation errors.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMacros">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L829">at line 829</a></div>
+        <code>                    array
+    <strong>getMacros</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns validator's available rules macros.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getResults">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L330">at line 330</a></div>
+        <code>                    array
+    <strong>getResults</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns validation results (errors and successes).</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRules">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L805">at line 805</a></div>
+        <code>                    array
+    <strong>getRules</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns validator's available rules.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isOK">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L350">at line 350</a></div>
+        <code>                    bool
+    <strong>isOK</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks whether the validation has passed or not.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_load">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L843">at line 843</a></div>
+        <code>                private    array
+    <strong>load</strong>(string $path)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Loads the passed path as an array (<code>include $path</code>).</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_reset">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L244">at line 244</a></div>
+        <code>                    void
+    <strong>reset</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resets validator's internal state.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setData">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L268">at line 268</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a>
+    <strong>setData</strong>(<abbr title="MAKS\Mighty\iterable">iterable</abbr> $data)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the data to validate.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="MAKS\Mighty\iterable">iterable</abbr></td>
+                <td>$data</td>
+                <td><p>The data to validate.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setLabels">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L318">at line 318</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a>
+    <strong>setLabels</strong>(array $labels)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets labels for each data key. These labels will be injected in validation messages.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$labels</td>
+                <td><p>An associative array where key is a data key and value is the label.
+Nested elements can be accessed using dot notation (<code>someKey.someNestedKey</code>).
+Keys can have the wildcard <code>*</code> after a dot to match all nested keys.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setMessages">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L302">at line 302</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a>
+    <strong>setMessages</strong>(array $messages)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets rule message override for each validation rule of each data key.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$messages</td>
+                <td><p>An associative array where key is a data key
+and value is an associative array where key is the rule name and value is the message.
+See <code>MAKS\Mighty\Rule::SCHEMA['@message']</code> for more info about placeholders.
+Nested elements can be accessed using dot notation (<code>someKey.someNestedKey</code>).
+Keys can have the wildcard <code>*</code> after a dot to match all nested keys.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setValidations">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L284">at line 284</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a>
+    <strong>setValidations</strong>(array $validations)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the validation expression for each data key.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$validations</td>
+                <td><p>The validation expression for each data key.
+Nested elements can be accessed using dot notation (<code>someKey.someNestedKey</code>).
+Keys can have the wildcard <code>*</code> after a dot to match all nested keys.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Validator.html"><abbr title="MAKS\Mighty\Validator">Validator</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validate">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L414">at line 414</a></div>
+        <code>                    array
+    <strong>validate</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validates current validator's data against current validator's validations and return the results.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The validation results.</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/UnknownValidationRuleException.html"><abbr title="MAKS\Mighty\Exception\UnknownValidationRuleException">UnknownValidationRuleException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/InexecutableRuleException.html"><abbr title="MAKS\Mighty\Exception\InexecutableRuleException">InexecutableRuleException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="MAKS\Mighty\InvalidBitwiseExpressionException">InvalidBitwiseExpressionException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateAll">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L433">at line 433</a></div>
+        <code>                    array
+    <strong>validateAll</strong>(<abbr title="MAKS\Mighty\iterable">iterable</abbr> $data, array $validations)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validates the passed data against the passed validations.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="MAKS\Mighty\iterable">iterable</abbr></td>
+                <td>$data</td>
+                <td><p>The data to validate.</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$validations</td>
+                <td><p>The validation expression for each data key.
+Nested elements can be accessed using dot notation (<code>someKey.someNestedKey</code>).
+Keys can have the wildcard <code>*</code> after a dot to match all nested keys.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The validation results.</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/UnknownValidationRuleException.html"><abbr title="MAKS\Mighty\Exception\UnknownValidationRuleException">UnknownValidationRuleException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/InexecutableRuleException.html"><abbr title="MAKS\Mighty\Exception\InexecutableRuleException">InexecutableRuleException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="MAKS\Mighty\InvalidBitwiseExpressionException">InvalidBitwiseExpressionException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateData">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L575">at line 575</a></div>
+        <code>        static            <abbr title="array|MAKS\Mighty\Result">Result</abbr>
+    <strong>validateData</strong>(mixed $data, <abbr title="MAKS\Mighty\MAKS\Mighty\Validation|string|array">Validation|string|array</abbr> $validation, array $messages = [], array $labels = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validates the passed data against the passed validation.</p></p>                <p><p>This method is a static helper that combines the functionality of <code>self::validateAll()</code> and <code>self::validateOne()</code>.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$data</td>
+                <td><p>The data to validate.
+Can be a single value or an associative array of values.</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="MAKS\Mighty\MAKS\Mighty\Validation|string|array">Validation|string|array</abbr></td>
+                <td>$validation</td>
+                <td><p>The validation expression.
+Can be a single validation expression (see <code>self::validateOne()</code>), or an array of validation expressions for each data key (see <code>self::validateAll()</code>).</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$messages</td>
+                <td><p>An associative array where key is a data key
+and value is an associative array where key is the rule name and value is the message.
+See <code>MAKS\Mighty\Rule::SCHEMA['@message']</code> for more info about placeholders.
+NOTE: Relevant only if <code>$data</code> is not a single value (<code>$validation</code> is an array).</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$labels</td>
+                <td><p>An associative array where key is a data key and value is the label.
+NOTE: Relevant only if <code>$data</code> is not a single value (<code>$validation</code> is an array).</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="array|MAKS\Mighty\Result">Result</abbr></td>
+            <td><p>The validation results.</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/UnknownValidationRuleException.html"><abbr title="MAKS\Mighty\Exception\UnknownValidationRuleException">UnknownValidationRuleException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/InexecutableRuleException.html"><abbr title="MAKS\Mighty\Exception\InexecutableRuleException">InexecutableRuleException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="MAKS\Mighty\InvalidBitwiseExpressionException">InvalidBitwiseExpressionException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateOne">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L493">at line 493</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Result.html"><abbr title="MAKS\Mighty\Result">Result</abbr></a>
+    <strong>validateOne</strong>(mixed $value, <abbr title="MAKS\Mighty\MAKS\Mighty\Validation|string">Validation|string</abbr> $validation)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validates a single value against the passed validation.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>The value to validate.</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="MAKS\Mighty\MAKS\Mighty\Validation|string">Validation|string</abbr></td>
+                <td>$validation</td>
+                <td><p>The validation expression string or object.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Result.html"><abbr title="MAKS\Mighty\Result">Result</abbr></a></td>
+            <td><p>The validation result.</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/UnknownValidationRuleException.html"><abbr title="MAKS\Mighty\Exception\UnknownValidationRuleException">UnknownValidationRuleException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../MAKS/Mighty/Exception/InexecutableRuleException.html"><abbr title="MAKS\Mighty\Exception\InexecutableRuleException">InexecutableRuleException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="MAKS\Mighty\InvalidBitwiseExpressionException">InvalidBitwiseExpressionException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validation">
+        <div class="location"><a href="https://github.com/MarwanAlsoltany/mighty/blob/master/src/Validator.php#L360">at line 360</a></div>
+        <code>                    <a href="../../MAKS/Mighty/Validation.html"><abbr title="MAKS\Mighty\Validation">Validation</abbr></a>
+    <strong>validation</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an instance of the validation expression builder.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../MAKS/Mighty/Validation.html"><abbr title="MAKS\Mighty\Validation">Validation</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Want to learn more about Mighty? Click  <a href="https://github.com/MarwanAlsoltany/mighty" rel="noreferrer noopener" target="_blank">here</a> to view the source code on GitHub!</div></div>
+    </div>
+    </body>
+
+</html>
