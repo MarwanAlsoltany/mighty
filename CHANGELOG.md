@@ -4,16 +4,44 @@ All notable changes to **Mighty** will be documented in this file.
 
 <br />
 
+## [[1.2.0] - 2022-12-09](https://github.com/MarwanAlsoltany/mighty/compare/v1.1.1...v1.2.0)
+- PHP 8.2 support.
+- Update `Constraint` class:
+    - Add `$validator` property.
+    - Rename `getValidator()` method to `getMasterValidator()`, this method as the name suggests, returns the Master Validator of all constraints.
+    - Add `getValidator()` method, this method return the Validator local to the constraint (which is by default a clone of the Master Validator, but can be swapped using `setValidator()`).
+    - Add `setValidator()` method.
+    - Update `validate()` method to make use of object's Validator.
+- Update `Compound` class:
+    - Rename method `groupConstraints()` to `combineConstraints()`
+    - Update class constructor to use the Master Validator to check parameters validity.
+- Update `Shape` class:
+    - Rename property `$recursive` to `$traverse`
+    - Update class constructor to use the Master Validator to check parameters validity.
+    - Update `validate()` method to make use of object's Validator.
+- Update `Callback` class:
+    - Update class constructor to use the Master Validator to check parameters validity.
+    - Update `validate()` method to make use of object's Validator.
+- Update `Valid` class:
+    - Update `validate()` method to make use of object's Validator.
+- Update `Maker` class:
+    - Move `Maker` class from `MAKS\Mighty\Validation` to `MAKS\Mighty` (root) namespace. Note that no backward compatibility issues will be introduced by this change as this class is marked as internal.
+- Update rule constraints:
+    - Regenerate `src/Validation/Constraints/Rule/*`.
+    - Update `Rule\Validation` class.
+- Update test:
+    - Add `LogicTest` class.
+
+<br />
+
 ## [[1.1.1] - 2022-11-07](https://github.com/MarwanAlsoltany/mighty/compare/v1.1.0...v1.1.1)
 - Update rules:
     - Fix `data` rules:
         - Refactor `json` rule to use `JSON_THROW_ON_ERROR`.
         - Update `xml` rule to clear libxml errors before checking.
 - Update `Engine` class:
-    - Fix `evaluateBitwiseExpression()` method checks for expression validity.
-    - Update `parseExpression()` method to allow for same rule repetition.
-    - Add `cleanExpression()` method.
-    - Add `evaluateExpression()` method.
+    - Refactor `parseExpression()` method.
+    - Update `clearExpression()` method.
 
 <br />
 
